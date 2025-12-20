@@ -1,0 +1,10 @@
+baseURL = 'http://localhost:1313/'
+languageCode = 'en-us'
+title = 'Portable Generator Guide'
+theme = 'PaperMod'
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  description = 'Practical guides for choosing and using portable generators safely.'
