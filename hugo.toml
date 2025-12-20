@@ -3,8 +3,23 @@ languageCode = 'en-us'
 title = 'Portable Generator Guide'
 theme = 'PaperMod'
 
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
 [pagination]
-  pagerSize = 10
+pagerSize = 10
 
 [params]
-  description = 'Practical guides for choosing and using portable generators safely.'
+description = 'Practical guides for choosing, using, and staying safe with portable generators.'
+author = 'Portable Generator Guide'
+defaultTheme = 'auto'
+ShowReadingTime = true
+ShowShareButtons = false
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowToc = true
+
+[taxonomies]
+category = 'categories'
+tag = 'tags'
