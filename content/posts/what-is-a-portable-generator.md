@@ -3,7 +3,7 @@ title: 'What Is a Portable Generator?'
 date: '2025-12-20T17:01:12+08:00'
 description: 'A clear explanation of what a portable generator is, how it works, and when it is commonly used.'
 tags: ['portable generator', 'generator basics']
-categories: ['Basics']
+categories: ['Generator Basics']
 draft: false
 slug: "what-is-a-portable-generator"
 ---

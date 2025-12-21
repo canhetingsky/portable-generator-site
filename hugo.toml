@@ -10,8 +10,14 @@ disableKinds = ["taxonomy", "term"]
 [pagination]
 pagerSize = 10
 
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+
 [params]
 env = "production"
+mainSections = []
 description = 'Practical guides for choosing, using, and staying safe with portable generators.'
 author = 'Portable Generator Guide'
 defaultTheme = 'auto'
@@ -22,7 +28,27 @@ ShowBreadCrumbs = true
 ShowCodeCopyButtons = true
 ShowWordCount = true
 ShowToc = true
+[params.footer]
+text = '<a href="/privacy-policy/">Privacy Policy</a>'
 
 [taxonomies]
 category = 'categories'
 tag = 'tags'
+
+[menu]
+[[menu.main]]
+name = "Guides"
+url = "/#core-portable-generator-guides"
+weight = 1
+[[menu.main]]
+name = "Use Cases"
+url = "/#common-use-cases"
+weight = 2
+[[menu.main]]
+name = "Safety"
+url = "/#safety-and-proper-use"
+weight = 3
+[[menu.main]]
+name = "About"
+url = "/about/"
+weight = 4

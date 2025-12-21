@@ -1,68 +1,74 @@
 ---
 title: "Portable Generator Guide"
-description: "Practical guides for choosing, using, and staying safe with portable generators."
+description: "Clear, practical guides explaining how portable generators work, what they can power, and how to use them safely."
 layout: "home"
 ---
 
-## Choosing and Using Portable Generators — The Practical Way
+## Practical Guides to Portable Generators
 
-Portable generators are commonly used for home backup power, camping, job sites, and emergency situations. However, selecting the right generator — and using it safely — can be confusing.
+Portable generators are commonly used for home backup power, camping, job sites, and emergency situations.  
+However, choosing the right generator — and using it safely — is often more complicated than it first appears.
 
-This site provides clear, research-based information to help you:
+**Portable Generator Guide** provides clear, research-based explanations to help you:
 
 - Understand how portable generators work
-- Avoid common safety mistakes
-- Estimate real power needs
-- Make informed, pressure-free decisions
+- Know what appliances and tools they can realistically power
+- Compare portable, inverter, and standby generators
+- Avoid common safety mistakes and misuse
 
-We do not sell generators directly. All content is independent and educational.
+This site is **independent and educational**. We do not sell generators directly, and our content is written to inform — not to push purchases.
 
 ---
 
-## Explore the Guides
+## Core Portable Generator Guides
 
-### 🔌 Portable Generator Basics
-
-Learn what portable generators are, how they work, and when they make sense compared to standby systems.
+If you are new to portable generators, start with these foundational explanations:
 
 - [What Is a Portable Generator?](/posts/what-is-a-portable-generator/)
-- [Portable vs Standby Generator](/posts/portable-vs-standby-generator/)
-- [How Portable Generators Work](/posts/how-portable-generators-work/)
+- [How Does a Portable Generator Work?](/posts/how-does-a-portable-generator-work/)
+- [What Can a Portable Generator Power?](/posts/what-can-a-portable-generator-power/)
+- [Portable Generator vs Standby Generator](/posts/portable-vs-standby-generator/)
+- [Portable Generator vs Inverter Generator](/posts/portable-vs-inverter-generator/)
+
+These articles explain the basic concepts and terminology used throughout the site.
 
 ---
 
-### 🛒 Buying Guides
+## Common Use Cases
 
-Understand power requirements, fuel types, noise levels, and generator types before choosing.
+Portable generators are used in many different situations. These guides focus on practical, real-world scenarios:
+
+- [Portable Generator for Home Backup Power](/posts/portable-generator-for-home-backup/)
+- [Portable Generator for Power Outages](/posts/portable-generator-for-power-outages/)
+- [Portable Generator for Camping](/posts/portable-generator-for-camping/)
+- [Portable Generator for RV Use](/posts/portable-generator-for-rv/)
+
+---
+
+## Choosing the Right Generator
+
+Before comparing models or prices, it is important to understand power requirements, fuel types, and trade-offs:
 
 - [How Many Watts Do I Need?](/posts/how-many-watts-do-i-need/)
 - [Inverter vs Conventional Generators](/posts/inverter-vs-conventional-generator/)
 - [Gas vs Dual Fuel Generators](/posts/gas-vs-dual-fuel-generators/)
+- [Portable Generator Noise Levels Explained](/posts/portable-generator-noise-levels/)
 
 ---
 
-### ⚠️ Use & Safety
+## Safety and Proper Use
 
-Generator misuse can be dangerous. These guides focus on safe operation and real-world risks.
+Generator misuse can be dangerous. These guides focus on safe operation and risk awareness:
 
 - [Portable Generator Safety Checklist](/posts/portable-generator-safety-checklist/)
 - [Can You Use a Generator in the Rain?](/posts/generator-in-the-rain/)
-- [Generator Carbon Monoxide Risks](/posts/generator-carbon-monoxide-risks/)
+- [Carbon Monoxide Risks of Portable Generators](/posts/generator-carbon-monoxide-risks/)
 
 ---
 
-## Start With These Articles
-
-If you are new to portable generators, begin with these essential guides:
-
-- [What Is a Portable Generator?](/posts/what-is-a-portable-generator/)
-- [How Many Watts Do I Need?](/posts/how-many-watts-do-i-need/)
-- [Portable Generator Safety Checklist](/posts/portable-generator-safety-checklist/)
-
----
-
-## Important Safety Disclaimer
+## Important Safety Notice
 
 Portable generators involve fuel, electricity, and exhaust gases. Improper use can cause serious injury or death.
 
-All information on this site is provided for general educational purposes only. Always follow manufacturer instructions and consult qualified professionals when necessary.
+All information on this site is provided for general educational purposes only.  
+Always follow manufacturer instructions and consult qualified professionals when necessary.
