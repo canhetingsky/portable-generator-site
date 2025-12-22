@@ -30,6 +30,10 @@ ShowWordCount = true
 ShowToc = true
 [params.footer]
 text = '<a href="/privacy-policy/">Privacy Policy</a>'
+[params.assets]
+favicon = "/favicon.ico"
+favicon16x16 = "/favicon-16x16.ico"
+favicon32x32 = "/favicon-32x32.ico"
 
 [taxonomies]
 category = 'categories'

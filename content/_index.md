@@ -28,7 +28,7 @@ If you are new to portable generators, start with these foundational explanation
 - [How Does a Portable Generator Work?](/posts/how-does-a-portable-generator-work/)
 - [What Can a Portable Generator Power?](/posts/what-can-a-portable-generator-power/)
 - [Portable Generator vs Standby Generator](/posts/portable-vs-standby-generator/)
-- [Portable Generator vs Inverter Generator](/posts/portable-vs-inverter-generator/)
+- [Inverter vs Conventional Generator](/posts/inverter-vs-conventional-generator/)
 
 These articles explain the basic concepts and terminology used throughout the site.
 
@@ -49,7 +49,7 @@ Portable generators are used in many different situations. These guides focus on
 
 Before comparing models or prices, it is important to understand power requirements, fuel types, and trade-offs:
 
-- [How Many Watts Do I Need?](/posts/how-many-watts-do-i-need/)
+- [How Many Watts Do I Need for a Portable Generator?](/posts/how-many-watts-do-i-need-for-a-portable-generator/)
 - [Inverter vs Conventional Generators](/posts/inverter-vs-conventional-generator/)
 - [Gas vs Dual Fuel Generators](/posts/gas-vs-dual-fuel-generators/)
 - [Portable Generator Noise Levels Explained](/posts/portable-generator-noise-levels/)

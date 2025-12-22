@@ -83,3 +83,12 @@ For long-term, automatic backup power, a standby generator may be more appropria
 ## Final Thoughts
 
 Portable generators provide a practical and flexible power solution for many scenarios. Understanding how they work and how to use them safely is essential before making any purchase or operational decision.
+
+---
+
+## Related Guides
+
+If you want to go beyond the basic definition, these guides explain how portable generators actually work and what they can realistically power:
+
+- [How Does a Portable Generator Work?](/posts/how-does-a-portable-generator-work/)
+- [What Can a Portable Generator Power?](/posts/what-can-a-portable-generator-power/)

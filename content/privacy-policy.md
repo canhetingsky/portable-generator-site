@@ -1,6 +1,7 @@
 ---
 title: "Privacy Policy"
 description: "Privacy policy for Portable Generator Guide."
+date: '2025-12-21T10:23:18+08:00'
 ---
 
 ## Privacy Policy

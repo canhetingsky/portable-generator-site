@@ -243,5 +243,14 @@ Rather than focusing on maximum wattage claims, planning around real-world usage
 
 - [What Is a Portable Generator?](/posts/what-is-a-portable-generator/)
 - [How Does a Portable Generator Work?](/posts/how-does-a-portable-generator-work/)
-- [How Many Watts Do I Need?](/posts/how-many-watts-do-i-need/)
+- [How Many Watts Do I Need for a Portable Generator?](/posts/how-many-watts-do-i-need-for-a-portable-generator/)
 - [Portable Generator Safety Checklist](/posts/portable-generator-safety-checklist/)
+
+---
+
+## Choosing the Right Generator Type
+
+Once you understand your power needs, these comparisons help you choose the right generator design:
+
+- [Inverter vs Conventional Generator](/posts/inverter-vs-conventional-generator/)
+- [Portable Generator vs Standby Generator](/posts/portable-vs-standby-generator/)

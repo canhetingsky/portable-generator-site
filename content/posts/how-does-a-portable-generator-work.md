@@ -13,9 +13,13 @@ slug: "how-does-a-portable-generator-work"
 A portable generator produces electricity by converting mechanical energy into electrical energy.
 Understanding how this process works helps users operate generators more safely, estimate power needs more accurately, and avoid common mistakes.
 
+Knowing how a generator produces and delivers power also makes it easier to understand [what a portable generator can power](/posts/what-can-a-portable-generator-power/) in real-world situations, including why certain appliances start easily while others require much more capacity.
+
 This guide explains how a typical portable generator works, what its main components do, and what happens when you plug in appliances or tools.
 
 ---
+
+Before looking at individual components, it helps to understand the basic energy conversion process that all portable generators follow.
 
 ## The Basic Principle: Mechanical Energy to Electrical Power
 
@@ -213,5 +217,14 @@ It also makes it easier to understand what a generator can realistically power a
 ## Related Guides
 
 * [What Is a Portable Generator?](/posts/what-is-a-portable-generator/)
-* [How Many Watts Do I Need?](/posts/how-many-watts-do-i-need/)
+* [How Many Watts Do I Need for a Portable Generator?](/posts/how-many-watts-do-i-need-for-a-portable-generator/)
 * [Portable Generator Safety Checklist](/posts/portable-generator-safety-checklist/)
+
+---
+
+## Next Reading
+
+To continue learning how generators are used in real-world situations, read:
+
+* [What Can a Portable Generator Power?](/posts/what-can-a-portable-generator-power/)
+* [Inverter vs Conventional Generator](/posts/inverter-vs-conventional-generator/)
