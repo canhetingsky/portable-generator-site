@@ -38,8 +38,8 @@ These articles explain the basic concepts and terminology used throughout the si
 
 Portable generators are used in many different situations. These guides focus on practical, real-world scenarios:
 
-- [Portable Generator for Home Backup Power](/posts/portable-generator-for-home-backup/)
-- [Portable Generator for Power Outages](/posts/portable-generator-for-power-outages/)
+- [Best Portable Generator for Home Backup Power](/posts/best-portable-generator-for-home-backup/)
+- [Best Generator for Apartment Power Outage](/posts/best-generator-for-apartment-power-outage/)
 - [Portable Generator for Camping](/posts/portable-generator-for-camping/)
 - [Portable Generator for RV Use](/posts/portable-generator-for-rv/)
 

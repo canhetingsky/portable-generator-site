@@ -1,8 +1,8 @@
 ---
 title: "Portable Generator Safety Checklist"
 date: "2025-12-22T12:32:50+08:00"
-description: "A practical safety checklist for portable generator use, covering placement, carbon monoxide risks, electrical hazards, fuel handling, and weather safety."
-tags:  ['portable generator safety', 'generator carbon monoxide', 'generator hazards', 'emergency power safety']
+description: "A practical and printable portable generator safety checklist covering placement, carbon monoxide risks, electrical hazards, fuel handling, weather safety, grounding, and maintenance."
+tags: ['portable generator safety', 'generator checklist', 'generator carbon monoxide', 'generator hazards', 'emergency power safety']
 categories: ['Generator Safety']
 draft: false
 slug: "portable-generator-safety-checklist"
@@ -12,7 +12,26 @@ slug: "portable-generator-safety-checklist"
 
 Portable generators can be extremely useful during power outages, outdoor activities, and job site work. However, improper use can lead to serious injuries, property damage, or even death.
 
-This safety checklist is designed to help users operate portable generators responsibly by addressing the most common and most dangerous risks associated with generator use.
+This guide combines a **quick, printable safety checklist** with **detailed explanations** of the most common and dangerous risks associated with portable generator use.  
+It is designed for real-world conditions — whether you are preparing in advance or responding to an active power outage.
+
+---
+
+## Quick Safety Checklist (Printable & Practical)
+
+Use this condensed checklist for fast reference during emergencies.  
+You may bookmark or print this section for quick access.
+
+- [ ] Generator is operated **outdoors only**
+- [ ] Generator is placed **at least 20 feet** from buildings
+- [ ] Exhaust is directed away from doors, windows, and vents
+- [ ] Carbon monoxide (CO) alarms are installed and working
+- [ ] Total electrical load is within generator capacity
+- [ ] Only **outdoor-rated extension cords** are used
+- [ ] Generator is kept dry and elevated
+- [ ] Refueling is done only after the generator cools
+- [ ] No backfeeding into household outlets
+- [ ] Children and pets are kept away
 
 ---
 
@@ -28,6 +47,9 @@ Improper placement is one of the leading causes of generator-related accidents.
 - Never run a generator in a garage, basement, crawl space, or near open windows
 
 Carbon monoxide is colorless and odorless. Even short-term exposure can be fatal, especially in enclosed or poorly ventilated areas.
+
+For a deeper explanation of indoor risks, see:  
+[Can You Use a Generator Indoors?](/posts/can-you-use-a-generator-indoors/)
 
 ---
 
@@ -104,6 +126,9 @@ Portable generators are not designed to operate in wet conditions unless specifi
 - Do not touch the generator with wet hands
 
 Water exposure increases the risk of electric shock and equipment damage.
+
+Related guide:  
+[Can You Use a Generator in the Rain?](/posts/can-you-use-a-generator-in-the-rain/)
 
 ---
 
