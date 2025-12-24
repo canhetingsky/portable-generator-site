@@ -61,7 +61,7 @@ Before comparing models or prices, it is important to understand power requireme
 Generator misuse can be dangerous. These guides focus on safe operation and risk awareness:
 
 - [Portable Generator Safety Checklist](/posts/portable-generator-safety-checklist/)
-- [Can You Use a Generator in the Rain?](/posts/generator-in-the-rain/)
+- [Can You Use a Generator in the Rain?](/posts/can-you-use-a-generator-in-the-rain/)
 - [Carbon Monoxide Risks of Portable Generators](/posts/generator-carbon-monoxide-risks/)
 
 ---
