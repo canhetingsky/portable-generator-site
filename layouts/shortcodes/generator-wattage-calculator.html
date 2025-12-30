@@ -1,0 +1,412 @@
+<div
+    class="not-prose my-8 max-w-5xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden font-sans">
+    <div class="px-6 py-6 bg-slate-200 border-b border-slate-200 text-center md:text-left">
+        <h3 class="text-2xl font-bold text-slate-900 m-0" id="generator-size-calculator">Generator Size Calculator</h3>
+        <p class="text-slate-600 mt-2">Check the appliances you need to power to find the right generator size.</p>
+    </div>
+
+    <div class="p-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8">
+            {{ range .Site.Data.appliances }}
+            <div class="mb-4">
+                <h4
+                    class="text-blue-700 font-bold border-b-2 border-blue-100 pb-1 mb-3 uppercase text-xs tracking-wider">
+                    {{ .category }}</h4>
+                <div class="space-y-3">
+                    {{ range .items }}
+                    <label class="group relative flex items-start justify-between gap-4 p-4 rounded-xl border border-slate-200 bg-white cursor-pointer
+                             transition
+                             hover:border-blue-300 hover:bg-slate-50
+                             has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50/40">
+
+                        <!-- Left -->
+                        <div class="flex items-start gap-3">
+                            <input type="checkbox"
+                                class="appliance-check mt-1 h-5 w-5 text-blue-600 focus:ring-blue-500"
+                                data-run="{{ .running_watts }}" data-start="{{ .starting_watts }}"
+                                onclick="calculateWatts()" />
+
+                            <div>
+                                <div class="font-medium text-slate-900 leading-snug">
+                                    {{ .name }}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right -->
+                        <div class="text-right">
+                            <!-- Running watts (always visible) -->
+                            <div class="font-mono font-semibold text-slate-900 tabular-nums">
+                                {{ .running_watts }} W
+                            </div>
+
+                            <!-- Startup surge (progressive disclosure) -->
+                            <div class="mt-1 text-xs font-semibold text-orange-600 tabular-nums
+                                 opacity-0 translate-y-1
+                                 transition-all duration-200
+                                 group-hover:opacity-100 group-hover:translate-y-0
+                                 has-[:checked]:opacity-100 has-[:checked]:translate-y-0">
+                                ⚡ Start: {{ .starting_watts }} W
+                            </div>
+                        </div>
+                    </label>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+
+    <div class="p-8 bg-slate-900 text-slate-100">
+        <!-- Calculation Explanation -->
+        <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            <strong class="text-white">How this size is calculated: </strong>
+            We add up all running watts and then account for the single largest starting surge,
+            since appliances don’t start at the same time.
+        </p>
+
+        <!-- Key Metrics -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                <span class="text-slate-300 font-medium">Total Running Load</span>
+                <span class="font-mono text-xl font-bold text-emerald-400">
+                    <span id="total-run">0</span> W
+                </span>
+            </div>
+
+            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                <span class="text-slate-300 font-medium">Peak Surge Requirement</span>
+                <span class="font-mono text-xl font-bold text-orange-400">
+                    <span id="total-start">0</span> W
+                </span>
+            </div>
+        </div>
+
+        <!-- Recommendation -->
+        <div class="bg-blue-600 rounded-2xl p-8 text-center shadow-xl space-y-6">
+
+            <!-- Title -->
+            <div>
+                <div class="text-blue-100 text-xs font-bold uppercase tracking-widest mb-2">
+                    Recommended Generator Size
+                </div>
+
+                <div class="text-6xl font-black text-white tabular-nums leading-none">
+                    <span id="final-size">0</span>
+                    <span class="block text-lg font-bold mt-1">Watts</span>
+                </div>
+            </div>
+
+
+            <!-- Most People Choose -->
+            <div class="bg-blue-700/60 rounded-xl p-4 text-blue-50 text-sm leading-relaxed hidden"
+                id="most-people-choose-container">
+                <p class="text-blue-100 text-sm">
+                    Most people choose:
+                    <strong class="underline underline-offset-2">
+                        <span id="most-people-choose"></span>
+                    </strong>
+                </p>
+            </div>
+
+            <!-- Guidance -->
+            <div class="bg-blue-700/40 rounded-2xl p-5 text-center mb-6">
+                <p class="text-sm font-medium leading-relaxed">
+                    <strong>What to look for when buying:</strong><br />
+                    Choose a generator rated at or above this wattage for
+                    continuous output.
+                </p>
+            </div>
+
+            <!-- Capability Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left hidden" id="capability-grid">
+                <!-- Suitable -->
+                <div class="bg-white/10 rounded-xl p-4 text-sm text-blue-50">
+                    <div class="font-semibold mb-1">✔ This size is suitable for</div>
+                    <ul class="list-disc list-inside space-y-1 text-blue-100" id="suitable-list"></ul>
+                </div>
+
+                <!-- Not Suitable -->
+                <div class="bg-white/10 rounded-xl p-4 text-sm text-blue-50">
+                    <div class="font-semibold mb-1">⚠ What it may not handle</div>
+                    <ul class="list-disc list-inside space-y-1 text-blue-100" id="not-suitable-list"></ul>
+                </div>
+            </div>
+
+            <!-- Decision Tip -->
+            <div class="bg-blue-800/70 rounded-xl p-4 text-blue-100 text-sm leading-relaxed hidden" id="decision-tip">
+                <strong>Pro tip: </strong>
+                <span id="pro-tip"></span>
+            </div>
+
+        </div>
+
+        <!-- Disclaimer -->
+        <p class="text-slate-400 text-xs mt-6 leading-relaxed p-3">
+            Note: This estimate assumes you won’t operate multiple high-wattage heating appliances
+            (such as space heaters, electric dryers, or stoves) at the same time.
+        </p>
+    </div>
+</div>
+
+<section class="not-prose max-w-5xl mx-auto my-16">
+    <h2 class="text-3xl font-bold text-slate-900 mb-6">
+        Generator Size & Wattage Calculator – FAQs
+    </h2>
+
+    <div class="space-y-6">
+        <!-- FAQ 1 -->
+        <div class="border border-slate-200 rounded-xl p-6 bg-white">
+            <h3 class="font-semibold text-lg text-slate-900 mb-2">
+                What does a generator size calculator actually calculate?
+            </h3>
+            <p class="text-slate-600 leading-relaxed">
+                A generator size calculator estimates the <strong>minimum wattage</strong> your portable generator
+                must provide to safely power your selected appliances. It adds up the
+                <strong>total running watts</strong> and then accounts for the
+                <strong>single largest starting (surge) wattage</strong>,
+                since most appliances do not start at the same time.
+            </p>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="border border-slate-200 rounded-xl p-6 bg-white">
+            <h3 class="font-semibold text-lg text-slate-900 mb-2">
+                Is a generator wattage calculator different from a generator size calculator?
+            </h3>
+            <p class="text-slate-600 leading-relaxed">
+                In practice, no. A <strong>generator wattage calculator</strong> focuses on the electrical load
+                (watts), while a <strong>generator size calculator</strong> translates that wattage
+                into a practical generator capacity you can purchase.
+                Both tools aim to answer the same question:
+                <em>How many watts does my generator need?</em>
+            </p>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="border border-slate-200 rounded-xl p-6 bg-white">
+            <h3 class="font-semibold text-lg text-slate-900 mb-2">
+                Why does the calculator include starting watts?
+            </h3>
+            <p class="text-slate-600 leading-relaxed">
+                Many appliances with motors—such as refrigerators, air conditioners,
+                sump pumps, and furnace blowers—require significantly more power
+                for a brief moment when they start.
+                Ignoring <strong>starting watts</strong> is one of the most common reasons
+                generators overload or shut down unexpectedly.
+            </p>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="border border-slate-200 rounded-xl p-6 bg-white">
+            <h3 class="font-semibold text-lg text-slate-900 mb-2">
+                Why does this calculator add only the largest starting surge?
+            </h3>
+            <p class="text-slate-600 leading-relaxed">
+                This calculator assumes realistic usage.
+                Appliances rarely start at the exact same moment.
+                Instead of stacking all starting surges—which would dramatically oversize
+                the generator—we add the <strong>largest single surge</strong> to the total
+                running load. This produces a more accurate and practical recommendation
+                for portable generator sizing.
+            </p>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="border border-slate-200 rounded-xl p-6 bg-white">
+            <h3 class="font-semibold text-lg text-slate-900 mb-2">
+                How accurate is this generator size calculator?
+            </h3>
+            <p class="text-slate-600 leading-relaxed">
+                This calculator provides a reliable estimate for most home backup
+                and portable generator use cases.
+                However, actual requirements may vary depending on appliance efficiency,
+                age, power factor, and usage patterns.
+                Always check the manufacturer specifications of both your appliances
+                and the generator before making a final purchase decision.
+            </p>
+        </div>
+
+        <!-- FAQ 6 -->
+        <div class="border border-slate-200 rounded-xl p-6 bg-white">
+            <h3 class="font-semibold text-lg text-slate-900 mb-2">
+                Should I choose a generator larger than the calculated result?
+            </h3>
+            <p class="text-slate-600 leading-relaxed">
+                In most cases, choosing the <strong>next standard generator size above</strong>
+                the calculated result is a smart decision.
+                This provides additional headroom, improves reliability,
+                and allows for future appliance additions without overloading the generator.
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    /* Generator Size Profiles */
+    const GENERATOR_SIZE_PROFILES = {
+        ultraLight: {
+            min: 0,
+            max: 1000,
+            label: "Ultra-Light Duty",
+            mostPeopleChoose: "1,000 W inverter generators",
+            suitableFor: [
+                "Phones, laptops, and routers",
+                "LED lighting",
+                "Low-power medical devices"
+            ],
+            notSuitableFor: [
+                "Refrigerators",
+                "Microwaves",
+                "Heating appliances"
+            ],
+            proTip:
+                "This size offers very limited headroom. Avoid running multiple devices at the same time."
+        },
+
+        basic: {
+            min: 1001,
+            max: 2000,
+            label: "Basic Emergency Backup",
+            mostPeopleChoose: "2,000 W portable generators",
+            suitableFor: [
+                "Refrigerator",
+                "Lights and electronics",
+                "Short-term power outages"
+            ],
+            notSuitableFor: [
+                "Space heaters",
+                "Window air conditioners",
+                "Multiple kitchen appliances simultaneously"
+            ],
+            proTip:
+                "If your calculated result is near the upper end of this range, stepping up to a 2,000 W class generator improves reliability."
+        },
+
+        popular: {
+            min: 2001,
+            max: 3000,
+            label: "Most Popular Choice",
+            mostPeopleChoose: "3,000 W portable generators",
+            suitableFor: [
+                "Refrigerator and microwave",
+                "Window air conditioner",
+                "Home office equipment"
+            ],
+            notSuitableFor: [
+                "Central air conditioning",
+                "Electric dryers",
+                "Large power tools at the same time"
+            ],
+            proTip:
+                "This is the most common generator size for homeowners seeking flexibility and safety margin."
+        },
+
+        power: {
+            min: 3001,
+            max: 5000,
+            label: "High-Capacity Home Backup",
+            mostPeopleChoose: "4,000–5,000 W generators",
+            suitableFor: [
+                "Multiple household appliances",
+                "Sump pumps",
+                "Furnace blower motors",
+                "Extended outage scenarios"
+            ],
+            notSuitableFor: [
+                "Central AC combined with electric heating",
+                "Running all high-load appliances simultaneously"
+            ],
+            proTip:
+                "At this capacity, consider installing a transfer switch for safer home integration."
+        },
+
+        wholeHome: {
+            min: 5001,
+            max: Infinity,
+            label: "Whole-Home Class",
+            mostPeopleChoose: "7,500 W or larger generators",
+            suitableFor: [
+                "Most essential home circuits",
+                "Central AC with load management",
+                "Long-duration outages"
+            ],
+            notSuitableFor: [
+                "Unlimited simultaneous high-wattage loads without planning"
+            ],
+            proTip:
+                "For generators above 5,000 W, fuel type, runtime, and installation matter more than wattage alone."
+        }
+    };
+
+    function getGeneratorProfileByWatts(watts) {
+        for (const key in GENERATOR_SIZE_PROFILES) {
+            const profile = GENERATOR_SIZE_PROFILES[key];
+            if (watts >= profile.min && watts <= profile.max) {
+                return profile;
+            }
+        }
+        return null;
+    }
+
+    function renderGeneratorProfile(watts) {
+        const profile = getGeneratorProfileByWatts(watts);
+        if (!profile) return;
+
+        document.getElementById("most-people-choose").textContent =
+            profile.mostPeopleChoose;
+
+        const suitableList = document.getElementById("suitable-list");
+        suitableList.innerHTML = "";
+        profile.suitableFor.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            suitableList.appendChild(li);
+        });
+
+        const notSuitableList = document.getElementById("not-suitable-list");
+        notSuitableList.innerHTML = "";
+        profile.notSuitableFor.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            notSuitableList.appendChild(li);
+        });
+
+        document.getElementById("pro-tip").textContent = profile.proTip;
+    }
+
+    function calculateWatts() {
+        let totalRunning = 0;
+        let maxStartingIncrement = 0;
+
+        document.querySelectorAll('.appliance-check').forEach(cb => {
+            if (cb.checked) {
+                const run = parseInt(cb.dataset.run, 10);
+                const start = parseInt(cb.dataset.start, 10);
+                totalRunning += run;
+                maxStartingIncrement = Math.max(maxStartingIncrement, start - run);
+            }
+        });
+
+        const requiredSurge = totalRunning + maxStartingIncrement;
+        const recommendedSize = requiredSurge > 0
+            ? Math.ceil(requiredSurge * 1.2)
+            : 0;
+
+        document.getElementById('total-run').innerText = totalRunning.toLocaleString();
+        document.getElementById('total-start').innerText = requiredSurge.toLocaleString();
+        document.getElementById('final-size').innerText = recommendedSize.toLocaleString();
+
+        if (!recommendedSize || recommendedSize <= 0) {
+            document.getElementById('most-people-choose-container').classList.toggle('hidden', true);
+            document.getElementById('capability-grid').classList.toggle('hidden', true);
+            document.getElementById('decision-tip').classList.toggle('hidden', true);
+            return;
+        }
+        document.getElementById('most-people-choose-container').classList.toggle('hidden', false);
+        document.getElementById('capability-grid').classList.toggle('hidden', false);
+        document.getElementById('decision-tip').classList.toggle('hidden', false);
+        renderGeneratorProfile(recommendedSize);
+    }
+</script>

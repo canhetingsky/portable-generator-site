@@ -10,3 +10,17 @@
         y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
     })(window, document, "clarity", "script", "urvo8kt7wv");
 </script>
+
+<!-- Tailwind CSS -->
+{{ with .Params.custom.use_tailwindcss }}
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+{{ end }}
+
+{{ with .Params.custom.schema }}
+{{ range . }}
+{{ $path := printf "schema/%s.html" . }}
+{{ if templates.Exists (printf "partials/%s" $path) }}
+{{ partial $path $ }}
+{{ end }}
+{{ end }}
+{{ end }}
