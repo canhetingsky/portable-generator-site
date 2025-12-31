@@ -1,0 +1,77 @@
+{{/* All posts */}}
+{{ $allPosts := where .Site.RegularPages "Section" "posts" }}
+
+{{/* Latest posts */}}
+{{ $latest := first 3 (sort $allPosts "Date" "desc") }}
+
+{{/* Collect latest URLs */}}
+{{ $latestURLs := slice }}
+{{ range $latest }}
+{{ $latestURLs = $latestURLs | append .RelPermalink }}
+{{ end }}
+
+{{/* Editor picks */}}
+{{ $rawPicks := where $allPosts "Params.editor_pick" true }}
+
+{{/* Exclude latest from picks */}}
+{{ $picks := where $rawPicks "RelPermalink" "not in" $latestURLs }}
+
+
+<section class="not-prose my-16 max-w-5xl mx-auto">
+    <div class="flex items-baseline justify-between mb-6">
+        <h2 class="text-2xl font-bold">
+            Recently Published Guide
+        </h2>
+
+        <a href="/posts/" class="text-sm font-medium text-blue-600 hover:text-blue-800 transition">
+            View all guides →
+        </a>
+    </div>
+
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+
+        <!-- Latest -->
+        <div>
+            <h3 class="text-lg font-semibold mb-4">Latest Guides</h3>
+            <ul class="space-y-4">
+                {{ range $latest }}
+                <li>
+                    <a href="{{ .RelPermalink }}" title="{{ .Description }}" class="font-medium hover:underline">
+                        {{ .Title }}
+                    </a>
+                    <div class="text-sm text-slate-500">
+                        {{ .Date.Format "Jan 2, 2006" }}
+                    </div>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+
+        <!-- Editor Picks -->
+        <div>
+            <h3 class="text-lg font-semibold mb-4">Editor’s Picks</h3>
+
+            {{ if gt (len $picks) 0 }}
+            <ul class="space-y-4">
+                {{ range first 3 $picks }}
+                <li>
+                    <a href="{{ .RelPermalink }}" title="{{ .Description }}" class="font-medium hover:underline">
+                        {{ .Title }}
+                    </a>
+                    <div class="text-sm text-slate-500">
+                        ⭐Recommended reading
+                    </div>
+                </li>
+                {{ end }}
+            </ul>
+            {{ else }}
+            <p class="text-sm text-slate-500">
+                More editor recommendations coming soon.
+            </p>
+            {{ end }}
+        </div>
+
+    </div>
+
+</section>

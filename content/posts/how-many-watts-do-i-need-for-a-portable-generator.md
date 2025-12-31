@@ -10,6 +10,7 @@ custom:
     schema:
         - schema-wattage-calculator-faq
     use_tailwindcss: true
+editor_pick: true
 ---
 
 ## How Many Watts Do I Need for a Portable Generator?

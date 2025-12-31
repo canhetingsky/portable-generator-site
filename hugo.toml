@@ -3,6 +3,7 @@ languageCode = 'en-us'
 title = 'Portable Generator Guide'
 theme = 'PaperMod'
 
+enableGitInfo = true
 googleAnalytics = "G-7XRR67NZEE"
 enableRobotsTXT = true
 disableKinds = ["taxonomy", "term"]
@@ -29,7 +30,7 @@ ShowCodeCopyButtons = true
 ShowWordCount = true
 ShowToc = true
 [params.footer]
-text = '<a href="/privacy-policy/">Privacy Policy</a>'
+text = 'All rights reserved.<br/><a href="/privacy-policy/">Privacy Policy</a> · <a href="/editorial-policy/">Editorial Policy</a> · <a href="/disclaimer/">Disclaimer</a>'
 [params.assets]
 favicon = "/favicon.ico"
 favicon16x16 = "/favicon-16x16.ico"

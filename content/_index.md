@@ -2,6 +2,8 @@
 title: "Portable Generator Guide"
 description: "Clear, practical guides explaining how portable generators work, what they can power, and how to use them safely."
 layout: "home"
+custom:
+    use_tailwindcss: true
 ---
 
 ## Practical Guides to Portable Generators
@@ -72,3 +74,6 @@ Portable generators involve fuel, electricity, and exhaust gases. Improper use c
 
 All information on this site is provided for general educational purposes only.  
 Always follow manufacturer instructions and consult qualified professionals when necessary.
+
+---
+{{< recent-posts >}}

@@ -6,6 +6,7 @@ tags:  ['portable generator', 'generator basics', 'how generators work']
 categories: ['Generator Basics']
 draft: false
 slug: "how-does-a-portable-generator-work"
+editor_pick: true
 ---
 
 ## How Does a Portable Generator Work?

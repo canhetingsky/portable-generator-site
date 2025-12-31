@@ -6,6 +6,7 @@ tags:  ['portable generator', 'generator basics', 'generator wattage', 'power ca
 categories: ['Generator Basics']
 draft: false
 slug: "what-can-a-portable-generator-power"
+editor_pick: true
 ---
 
 ## What Can a Portable Generator Power?
