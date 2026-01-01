@@ -23,7 +23,15 @@ description = 'Practical guides for choosing, using, and staying safe with porta
 author = 'Portable Generator Guide'
 defaultTheme = 'auto'
 ShowReadingTime = true
-ShowShareButtons = false
+ShowShareButtons = true
+ShareButtons = [
+    'reddit',
+    'linkedin',
+    'twitter',
+    'facebook',
+    'whatsapp',
+    'telegram',
+]
 ShowPostNavLinks = true
 ShowBreadCrumbs = true
 ShowCodeCopyButtons = true
@@ -57,3 +65,6 @@ weight = 3
 name = "About"
 url = "/about/"
 weight = 4
+
+[outputs]
+home = ["HTML", "RSS", "JSON"] # necessary for search

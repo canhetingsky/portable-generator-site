@@ -12,9 +12,84 @@
 </script>
 
 <!-- Tailwind CSS -->
-{{ with .Params.custom.use_tailwindcss }}
+{{ if .Params.custom.use_tailwindcss }}
+<!-- 1. 先引入 Tailwind CSS -->
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<!-- 2. 修复 Tailwind CSS 导致的列表样式丢失问题 -->
+<style>
+    /* 恢复文章内容区有序列表序号 */
+    .post-content ol {
+        list-style-type: decimal !important;
+        /* 有序列表显示数字序号 */
+        list-style-position: outside !important;
+        /* 序号在列表项外侧（默认样式） */
+        padding-left: 2em !important;
+        /* 恢复缩进，让序号显示出来 */
+        margin: 1em 0 !important;
+        /* 恢复列表上下间距 */
+    }
+
+    /* 恢复文章内容区无序列表圆点 */
+    .post-content ul {
+        list-style-type: disc !important;
+        /* 无序列表显示圆点 */
+        list-style-position: outside !important;
+        padding-left: 2em !important;
+        margin: 1em 0 !important;
+    }
+
+    /* 确保列表项样式正常（修复 Tailwind 重置的 margin/padding） */
+    .post-content li {
+        margin: 0.5em 0 !important;
+        /* 列表项上下间距 */
+        padding: 0 !important;
+    }
+
+    /* 兼容嵌套列表（可选） */
+    .post-content ol ol {
+        list-style-type: lower-alpha !important;
+        /* 二级有序列表用字母 */
+        padding-left: 2.5em !important;
+    }
+
+    .post-content ul ul {
+        list-style-type: circle !important;
+        /* 二级无序列表用空心圆 */
+        padding-left: 2.5em !important;
+    }
+</style>
 {{ end }}
+
+<!-- KaTeX for rendering math -->
+{{- if .Params.custom.math -}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.27/dist/katex.min.css"
+    integrity="sha384-Pu5+C18nP5dwykLJOhd2U4Xen7rjScHN/qusop27hdd2drI+lL5KvX7YntvT8yew" crossorigin="anonymous">
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.27/dist/katex.min.js"
+    integrity="sha384-2B8pfmZZ6JlVoScJm/5hQfNS2TI/6hPqDZInzzPc8oHpN5SgeNOf4LzREO6p5YtZ"
+    crossorigin="anonymous"></script>
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.27/dist/contrib/auto-render.min.js"
+    integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.body, {
+            // customised options
+            // • auto-render specific keys, e.g.:
+            delimiters: [
+                { left: '$$', right: '$$', display: true },
+                { left: '$', right: '$', display: false },
+                { left: '\\(', right: '\\)', display: false },
+                { left: '\\[', right: '\\]', display: true }
+            ],
+            // • rendering keys, e.g.:
+            throwOnError: false
+        });
+    });
+</script>
+{{- end -}}
 
 {{ with .Params.custom.schema }}
 {{ range . }}

@@ -11,7 +11,7 @@
 {{ end }}
 
 {{/* Editor picks */}}
-{{ $rawPicks := where $allPosts "Params.editor_pick" true }}
+{{ $rawPicks := where $allPosts "Params.custom.editor_pick" true }}
 
 {{/* Exclude latest from picks */}}
 {{ $picks := where $rawPicks "RelPermalink" "not in" $latestURLs }}

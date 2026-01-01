@@ -1,0 +1,189 @@
+{{/* ===== Parameters ===== */}}
+{{ $baseRate := .Get "base_rate" | default 0.5 }}
+{{ $tankDefault := .Get "tank" | default 5 }}
+{{ $loadDefault := .Get "load" | default 50 }}
+
+<div class="not-prose my-10 max-w-5xl mx-auto bg-white border border-slate-200 rounded-[2rem] shadow-2xl overflow-hidden"
+    data-base-rate="{{ $baseRate }}">
+    <!-- Header -->
+    <div class="px-8 py-7 bg-slate-200 flex items-center gap-5" id="generator-runtime-estimator">
+        <span class="flex items-center justify-center w-12 h-12 bg-blue-600 rounded-2xl">
+            ⚡
+        </span>
+        <div>
+            <h3 class="text-2xl font-black text-white leading-tight">
+                Generator Runtime Estimator
+            </h3>
+            <p class="text-blue-400 text-sm font-bold mt-1">
+                Fuel-Limited Runtime Estimation
+            </p>
+        </div>
+    </div>
+
+    <!-- Body -->
+    <div class="p-5 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Controls -->
+        <div class="bg-slate-100 p-8 rounded-3xl space-y-10">
+            <!-- Tank -->
+            <div>
+                <div class="flex justify-between mb-3">
+                    <span class="font-black text-sm uppercase">Tank Capacity (gal)</span>
+                    <span class="text-3xl font-black text-blue-700" data-tank-value>{{ $tankDefault }}</span>
+                </div>
+                <input type="range" min="1" max="20" step="0.5" value="{{ $tankDefault }}"
+                    class="w-full accent-blue-600" data-tank />
+            </div>
+
+            <!-- Load -->
+            <div>
+                <div class="flex justify-between mb-3">
+                    <span class="font-black text-sm uppercase flex items-center gap-2">
+                        Electrical Load
+                        <a href="/posts/how-many-watts-do-i-need-for-a-portable-generator/#use-our-interactive-generator-calculator"
+                            title="Need help? Click to calculate your required wattage."
+                            class="text-slate-400 hover:text-blue-600 transition-colors duration-200" target="_blank">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </a>
+                    </span>
+                    <span class="px-4 py-2 bg-blue-600 text-white rounded-xl font-black"><span data-load-value>{{
+                            $loadDefault }}</span>%</span>
+                </div>
+                <input type="range" min="10" max="100" step="5" value="{{ $loadDefault }}"
+                    class="w-full accent-blue-600" data-load />
+            </div>
+
+            <!-- Note -->
+            <div class="bg-white p-5 rounded-2xl text-sm text-slate-700">
+                <strong class="block text-blue-600 uppercase text-xs mb-1">Expert note</strong>
+                Efficiency peaks near 50% load. Fuel consumption rises rapidly above 75%.
+            </div>
+        </div>
+
+        <!-- Result -->
+        <div class="bg-slate-900 rounded-[2rem] p-10 text-center text-white flex flex-col justify-center min-h-[420px]">
+            <div class="text-blue-400 text-xs font-black uppercase tracking-widest mb-6">
+                Estimated Runtime (per tank)
+            </div>
+
+            <div class="flex justify-center items-baseline gap-2 mb-6">
+                <span class="text-7xl font-black tabular-nums" data-runtime>—</span>
+                <span class="text-xl text-slate-400">hrs</span>
+            </div>
+
+            <div class="inline-block px-6 py-2 rounded-full bg-blue-600 font-black text-xs uppercase tracking-widest mb-8"
+                data-status>
+                Normal Operation
+            </div>
+
+            <div class="grid grid-cols-2 gap-6 text-left text-sm">
+                <div>
+                    <div class="text-slate-400 uppercase text-xs mb-1">Fuel rate</div>
+                    <div><span data-rate>—</span> gal/hr</div>
+                </div>
+                <div>
+                    <div class="text-slate-400 uppercase text-xs mb-1">Fuel empty</div>
+                    <div>After <span data-empty>—</span> hrs</div>
+                </div>
+            </div>
+
+            <div class="mt-8 hidden" data-continuous-alert>
+                <div class="flex items-center gap-4 p-5 rounded-2xl text-sm font-black uppercase tracking-wide"
+                    data-alert-box>
+                    <span data-alert-icon>⚠️</span>
+                    <span data-alert-text></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Note -->
+    <div class="mt-5 rounded-xl border border-slate-200 bg-slate-50 px-10 py-3 text-sm text-slate-600">
+        <span class="font-semibold text-slate-700">Note:</span>
+        Runtime estimates assume typical portable gasoline generators operating under normal conditions.
+        Actual continuous runtime may be shorter due to oil checks, cooling requirements, altitude,
+        and manufacturer-specific limits.
+    </div>
+</div>
+
+<script>
+    (function () {
+        const root = document.currentScript.previousElementSibling;
+        if (!root) return;
+
+        const tankInput = root.querySelector('[data-tank]');
+        const loadInput = root.querySelector('[data-load]');
+        const tankValue = root.querySelector('[data-tank-value]');
+        const loadValue = root.querySelector('[data-load-value]');
+        const runtimeEl = root.querySelector('[data-runtime]');
+        const rateEl = root.querySelector('[data-rate]');
+        const emptyEl = root.querySelector('[data-empty]');
+        const statusEl = root.querySelector('[data-status]');
+        const alertWrap = root.querySelector('[data-continuous-alert]');
+        const alertBox = root.querySelector('[data-alert-box]');
+        const alertText = root.querySelector('[data-alert-text]');
+        const alertIcon = root.querySelector('[data-alert-icon]');
+        const baseRate = parseFloat(root.dataset.baseRate);
+
+        function calculate() {
+            const tank = parseFloat(tankInput.value);
+            const load = parseFloat(loadInput.value);
+
+            tankValue.textContent = tank.toFixed(1);
+            loadValue.textContent = load;
+
+            const rate = baseRate * (load / 50);
+            const runtime = tank / rate;
+
+            runtimeEl.textContent = runtime.toFixed(1);
+            rateEl.textContent = rate.toFixed(2);
+            emptyEl.textContent = Math.floor(runtime);
+
+            if (load <= 25) {
+                statusEl.textContent = 'Eco Efficient';
+                statusEl.className =
+                    'inline-block px-6 py-2 rounded-full bg-emerald-600 text-white font-black text-xs uppercase tracking-widest mb-8';
+            } else if (load >= 85) {
+                statusEl.textContent = 'Maximum Load';
+                statusEl.className =
+                    'inline-block px-6 py-2 rounded-full bg-red-600 text-white font-black text-xs uppercase tracking-widest mb-8';
+            } else if (load >= 75) {
+                statusEl.textContent = 'High Load';
+                statusEl.className =
+                    'inline-block px-6 py-2 rounded-full bg-orange-500 text-white font-black text-xs uppercase tracking-widest mb-8';
+            } else {
+                statusEl.textContent = 'Normal Operation';
+                statusEl.className =
+                    'inline-block px-6 py-2 rounded-full bg-blue-600 text-white font-black text-xs uppercase tracking-widest mb-8';
+            }
+
+            // ===== Continuous operation risk logic =====
+            alertWrap.classList.add('hidden');
+
+            if (runtime >= 12) {
+                alertWrap.classList.remove('hidden');
+                alertIcon.textContent = '⛔';
+                alertText.textContent =
+                    'Continuous operation beyond 12 hours is not recommended. Stop and check oil and cooling.';
+                alertBox.className =
+                    'flex items-center gap-4 p-5 rounded-2xl bg-red-600 text-white text-sm font-black uppercase tracking-wide';
+            } else if (runtime >= 8) {
+                alertWrap.classList.remove('hidden');
+                alertIcon.textContent = '⚠️';
+                alertText.textContent =
+                    'Stop and check oil levels every 8–12 hours during continuous operation.';
+                alertBox.className =
+                    'flex items-center gap-4 p-5 rounded-2xl bg-orange-500 text-white text-sm font-black uppercase tracking-wide';
+            }
+        }
+
+        tankInput.addEventListener('input', calculate);
+        loadInput.addEventListener('input', calculate);
+        calculate();
+    })();
+</script>

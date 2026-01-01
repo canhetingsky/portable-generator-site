@@ -8,9 +8,11 @@ draft: false
 slug: "how-many-watts-do-i-need-for-a-portable-generator"
 custom:
     schema:
+        - schema-wattage-calculator-sw
         - schema-wattage-calculator-faq
     use_tailwindcss: true
-editor_pick: true
+    math: true
+    editor_pick: true
 ---
 
 ## How Many Watts Do I Need for a Portable Generator?
@@ -151,19 +153,32 @@ Recommended generator size:
 
 This final number is your **generator size**, not just wattage demand.
 
-{{< generator-wattage-calculator >}}
-
 ---
 
 ## Generator Size Calculator Summary
 
-To summarize the calculation:
+To summarize the sizing process:
 
-1. Add all running watts  
-2. Add the highest starting watt  
-3. Add 20–25% buffer  
+1. **Add all running watts** of the appliances you plan to use simultaneously.
+2. **Add the single highest starting surge** (do not add starting watts for all devices).
+3. **Add a 20–25% safety buffer** to protect your generator from overload.
+
+Follow this industry-standard formula:
+
+$$Required\ Capacity = (\sum Running\ Watts + \max Starting\ Surge) \times 1.2$$
+
+**Where:**
+
+- $\sum \text{Running Watts}$: Total continuous power required for all devices.
+- $\max \text{Starting Surge}$: The extra power needed for your most demanding motor, such as a refrigerator or AC.
 
 This process functions as a **manual generator size calculator** and produces reliable results for most home and emergency scenarios.
+
+### Use Our Interactive Generator Calculator
+
+Ready to skip the manual math? Use the tool below to select your appliances. Our algorithm automatically applies the formula above to give you a safe, reliable recommendation.
+
+{{< generator-wattage-calculator >}}
 
 ---
 
@@ -302,6 +317,10 @@ It’s about:
 - Allowing reasonable safety margin
 
 By following this generator wattage and size calculation method, you can confidently choose a portable generator that fits your needs without unnecessary risk or expense.
+
+Once you know how many watts you need, the next step is understanding how long that generator can actually run on a full tank of fuel.
+
+You can estimate expected runtime based on load and fuel capacity using our [Generator Runtime Estimator](/posts/how-long-can-a-portable-generator-run-continuously/).
 
 ---
 

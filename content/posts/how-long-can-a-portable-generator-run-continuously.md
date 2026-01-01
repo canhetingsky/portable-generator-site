@@ -6,6 +6,11 @@ tags: ['portable generator runtime', 'generator continuous run', 'power outage',
 categories: ['Portable Generator Basics']
 draft: false
 slug: "how-long-can-a-portable-generator-run-continuously"
+custom:
+    schema:
+        - schema-runtime-calculator-sw
+        - schema-load-percentage-faq
+    use_tailwindcss: true
 ---
 
 ## How Long Can a Portable Generator Run Continuously?
@@ -41,12 +46,13 @@ Manufacturers often list runtime at **25% or 50% load**, which can be misleading
 - At lower loads, generators consume less fuel  
 - At higher loads, fuel consumption increases sharply  
 
-For example:
+Rather than relying on fixed runtime ratings, estimating runtime based on your actual fuel capacity and load level provides a more realistic picture.
 
-- A generator rated for 10 hours at 25% load may run only 5–6 hours at 50% load  
-- Near maximum load, runtime can drop significantly  
+If you are unsure how load percentage relates to your actual appliances, calculating your required generator wattage first can make this estimate far more accurate. Our [Generator Size Calculator](/posts/how-many-watts-do-i-need-for-a-portable-generator/) helps you determine the appropriate generator size before estimating runtime.
 
-Running a generator at moderate load improves both runtime and engine longevity.
+{{< generator-runtime-calculator >}}
+
+> **Estimator note:** This tool provides a fuel-limited runtime estimate under typical operating conditions. Actual continuous operation may be shorter due to oil checks, cooling requirements, or manufacturer-imposed limits.
 
 ---
 
