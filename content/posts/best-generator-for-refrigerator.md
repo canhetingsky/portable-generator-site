@@ -50,6 +50,8 @@ The exact numbers vary depending on:
 
 A generator must be sized to handle the **highest starting surge**, not just the continuous load.
 
+For a more detailed calculation, try our [Portable Generator Size Calculator](/tools/generator-size/).
+
 ---
 
 ### Why Oversizing Slightly Is a Good Idea

@@ -50,6 +50,10 @@ tag = 'tags'
 
 [menu]
 [[menu.main]]
+name = "Calculator"
+url = "/tools/generator-size/"
+weight = -1
+[[menu.main]]
 name = "Guides"
 url = "/#core-portable-generator-guides"
 weight = 1

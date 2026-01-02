@@ -42,6 +42,9 @@ popular:
   max: 3000
   label: "Most Popular Choice"
   mostPeopleChoose: "3,000 W portable generators"
+  cta:
+    size_page: "/generator-sizes/2000-3000-watt/"
+    buying_guide: "/best-portable-generators/"
   suitableFor:
     - "Refrigerator and microwave"
     - "Window air conditioner"

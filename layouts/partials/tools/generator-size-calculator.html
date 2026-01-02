@@ -1,0 +1,581 @@
+{{ $mode := "simple" }}
+
+{{ if .Params.mode }}
+{{ $mode = .Params.mode }}
+{{ else if .Params.custom.mode }}
+{{ $mode = .Params.custom.mode }}
+{{ end }}
+
+<section id="generator-size-tool" data-tool="generator-size" data-tool-type="calculator">
+    <!-- calculator UI goes here -->
+    <div
+        class="not-prose my-8 max-w-5xl mx-auto bg-white border border-slate-200 rounded-2xl shadow-lg overflow-hidden font-sans">
+        <div class="px-6 py-1 bg-slate-200 border-b border-slate-200 text-center md:text-left">
+            <h3 class="text-2xl font-bold text-slate-900 m-0" id="generator-size-calculator">Generator Size Calculator
+            </h3>
+            <p class="text-slate-600 mt-2">Check the appliances you need to power to find the right generator size.</p>
+        </div>
+
+        <div class="px-6 py-1">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-2">
+                {{ range .Site.Data.appliances }}
+                {{ if or .common (eq $mode "full") }}
+                <div class="mb-4">
+                    <h4
+                        class="!text-blue-700 font-bold border-b-2 border-blue-100 pb-1 mb-3 uppercase text-xs tracking-wider">
+                        {{ .category }}</h4>
+                    <div class="space-y-3">
+                        {{ range .items }}
+                        {{ if or .common (eq $mode "full") }}
+                        <label class="group relative flex items-start justify-between gap-4 p-4 rounded-xl border border-slate-200 bg-white cursor-pointer
+                             transition
+                             hover:border-blue-300 hover:bg-slate-50
+                             has-[:checked]:border-blue-500 has-[:checked]:bg-blue-50/40">
+
+                            <!-- Left -->
+                            <div class="flex items-start gap-3">
+                                <input type="checkbox"
+                                    class="appliance-check mt-1 h-5 w-5 text-blue-600 focus:ring-blue-500"
+                                    data-run="{{ .running_watts }}" data-start="{{ .starting_watts }}"
+                                    onclick="calculateWatts()" />
+
+                                <div>
+                                    <div class="font-medium text-slate-900 leading-snug">
+                                        {{ .name }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right -->
+                            <div class="text-right">
+                                <!-- Running watts (always visible) -->
+                                <div class="font-mono font-semibold text-slate-900 tabular-nums">
+                                    {{ .running_watts }} W
+                                </div>
+
+                                <!-- Startup surge (progressive disclosure) -->
+                                <div class="mt-1 text-xs font-semibold text-orange-600 tabular-nums
+                                        opacity-80 whitespace-nowrap
+                                        md:opacity-60 md:translate-y-1
+                                        transition-all duration-200
+                                        md:group-hover:opacity-100 md:group-hover:translate-y-0">
+                                    ⚡ Start: {{ .starting_watts }} W
+                                </div>
+                            </div>
+                        </label>
+                        {{ end }}
+                        {{ end }}
+                    </div>
+                </div>
+                {{ end }}
+                {{ end }}
+            </div>
+        </div>
+
+        <div class="px-8 pt-8 pb-1 bg-slate-900 text-slate-100">
+            <!-- Calculation Explanation -->
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+                <strong class="text-white">How this size is calculated: </strong>
+                We add up all running watts and then account for the single largest starting surge,
+                since appliances don’t start at the same time.
+            </p>
+
+            <!-- Key Metrics -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-slate-300 font-medium">Total Running Load</span>
+                    <span class="font-mono text-xl font-bold text-emerald-400">
+                        <span id="total-run">0</span> W
+                    </span>
+                </div>
+
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                    <span class="text-slate-300 font-medium">Peak Surge Requirement</span>
+                    <span class="font-mono text-xl font-bold text-orange-400">
+                        <span id="total-start">0</span> W
+                    </span>
+                </div>
+            </div>
+
+            <!-- Recommendation -->
+            <div class="bg-blue-600 rounded-2xl p-8 text-center shadow-xl space-y-6">
+
+                <!-- Title -->
+                <div>
+                    <div class="text-blue-100 text-xs font-bold uppercase tracking-widest mb-2">
+                        Recommended Generator Size
+                    </div>
+
+                    <div class="text-6xl font-black text-white tabular-nums leading-none">
+                        <span id="final-size">0</span>
+                        <span class="text-lg font-bold mt-1">Watts</span>
+                    </div>
+                </div>
+
+                <!-- Safety Margin -->
+                <div
+                    class="inline-flex items-center px-3 py-1 bg-blue-700/50 rounded-full text-[10px] text-white font-bold uppercase tracking-tighter">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-blue-300" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            clip-rule="evenodd" />
+                    </svg>
+                    20% Safety Margin Included
+                </div>
+
+
+                <!-- Most People Choose -->
+                {{ if eq $mode "full" }}
+                <div class="bg-blue-700/60 rounded-xl p-4 text-blue-50 text-sm leading-relaxed hidden"
+                    id="most-people-choose-container">
+                    <p class="text-blue-100 text-sm">
+                        Most people choose:
+                        <strong class="underline underline-offset-2">
+                            <span id="most-people-choose">---</span>
+                        </strong>
+                    </p>
+                </div>
+                {{ end }}
+
+                <!-- Guidance -->
+                <div class="bg-blue-700/40 rounded-2xl p-5 text-center mb-6">
+                    <p class="text-sm font-medium leading-relaxed">
+                        {{ if eq $mode "full" }}
+                        <strong>What to look for when buying:</strong><br />
+                        Choose a generator rated at or above this wattage for
+                        continuous output.
+                        {{ else if eq $mode "simple" }}
+                        For a full calculation and detailed recommendations, try our
+                        <a href="/tools/generator-size/" class="inline-flex items-center gap-1 !text-white font-semibold 
+                              underline decoration-2 underline-offset-2 hover:decoration-yellow-300 
+                              hover:text-yellow-300 transition-colors">
+                            Portable Generator Size Calculator.
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                        {{ end }}
+                    </p>
+                </div>
+
+                <!-- Capability Grid -->
+                {{ if eq $mode "full" }}
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left hidden" id="capability-grid">
+                    <!-- Suitable -->
+                    <div class="bg-white/10 rounded-xl p-4 text-sm text-blue-50">
+                        <div class="font-semibold mb-1">✔ This size is suitable for</div>
+                        <ul class="list-disc list-inside space-y-1 text-blue-100" id="suitable-list"></ul>
+                    </div>
+
+                    <!-- Not Suitable -->
+                    <div class="bg-white/10 rounded-xl p-4 text-sm text-blue-50">
+                        <div class="font-semibold mb-1">⚠ What it may not handle</div>
+                        <ul class="list-disc list-inside space-y-1 text-blue-100" id="not-suitable-list"></ul>
+                    </div>
+                </div>
+                {{ end }}
+
+                <!-- Decision Tip -->
+                {{ if eq $mode "full" }}
+                <div class="bg-blue-800/70 rounded-xl p-4 text-blue-100 text-sm leading-relaxed hidden"
+                    id="decision-tip">
+                    <strong>Pro tip: </strong>
+                    <span id="pro-tip"></span>
+                </div>
+                {{ end }}
+
+            </div>
+
+            <!-- Disclaimer -->
+            <p class="text-slate-400 text-xs mt-6 leading-relaxed p-3">
+                Note: This estimate assumes you won’t operate multiple high-wattage heating appliances
+                (such as space heaters, electric dryers, or stoves) at the same time.
+            </p>
+        </div>
+
+        <!-- helpful tip -->
+        <div id="helpful-tip"
+            class="hidden bg-slate-100 rounded-xl border border-slate-200 bg-slate-50 px-10 py-3 text-sm text-slate-600">
+            Once you know your generator size,
+            <a href="/posts/how-long-can-a-portable-generator-run-continuously/#generator-runtime-estimator"
+                class="font-semibold text-blue-600 hover:underline" target="_blank">
+                estimate how long it can run on a full tank.
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Generator Size Table -->
+    {{ if eq $mode "full" }}
+    <div class="not-prose mt-10 max-w-4xl mx-auto rounded-2xl border border-slate-200 bg-slate-50 p-6 md:p-8">
+
+        <!-- Title -->
+        <h4 class="text-lg font-bold text-slate-900 mb-2">
+            What Generator Size Should You Actually Buy?
+        </h4>
+
+        <p class="text-sm text-slate-600 mb-6">
+            Generators are sold in standard size ranges, not exact watt numbers.
+            Use your calculated result to choose the next practical size up.
+        </p>
+
+        <!-- Size Mapping -->
+        <div class="overflow-hidden rounded-xl border border-slate-200 bg-white mb-6">
+            <table class="w-full text-sm p-3">
+                <thead class="bg-slate-100 text-slate-700">
+                    <tr>
+                        <th class="px-4 py-3 text-left font-semibold">Your Calculated Need</th>
+                        <th class="px-4 py-3 text-left font-semibold">Common Generator Size</th>
+                    </tr>
+                </thead>
+                <tbody id="size-map">
+                    {{/* 1. 读取所有配置项，不区分名称，只收集 commonSizes */}}
+                    {{ $generatorData := site.Data.generator_size_profiles }}
+                    {{ $allCommonSizes := slice }}
+
+                    {{/* 遍历所有配置项（不管名称/顺序），收集所有 commonSizes */}}
+                    {{ range $profile := $generatorData }}
+                    {{ if reflect.IsMap $profile }} {{/* 排除非配置项字段 */}}
+                    {{ range $commonSize := $profile.commonSizes }}
+                    {{ $allCommonSizes = $allCommonSizes | append $commonSize }}
+                    {{ end }}
+                    {{ end }}
+                    {{ end }}
+
+                    {{/* 2. 按 min 字段升序排序（核心：用业务逻辑代替硬编码顺序） */}}
+                    {{ $sortedSizes := sort $allCommonSizes "min" "asc" }}
+
+                    {{/* 3. 渲染表格行 */}}
+                    {{ range $size := $sortedSizes }}
+                    <tr data-min="{{ $size.min }}" data-max="{{ $size.max }}"
+                        class="border-t border-slate-200 transition">
+                        <td class="p-3">{{ $size.load }}</td>
+                        <td class="p-3 font-semibold">{{ $size.recommend }}</td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+
+        <p id="size-warning"
+            class="hidden mt-4 text-sm text-orange-700 bg-orange-50 border border-orange-200 rounded-lg p-3">
+            Your power requirement exceeds common portable generator sizes.
+            Consider larger models or standby solutions.
+        </p>
+
+        <!-- Buying Guidance -->
+        <div class="mb-6">
+            <h5 class="text-sm font-bold text-slate-800 mb-2 uppercase tracking-wide">
+                What to Look for When Buying
+            </h5>
+            <ul class="space-y-2 text-sm text-slate-700 list-disc pl-5">
+                <li>Continuous (running) watts at or above your recommended size</li>
+                <li>Surge watts high enough to handle startup loads</li>
+                <li>Noise level under 70 dB for home or apartment use</li>
+                <li>CO automatic shutoff for safety</li>
+            </ul>
+        </div>
+
+        <!-- Soft CTA -->
+        <div class="rounded-xl bg-blue-600 p-5 text-center text-white">
+            <p class="font-semibold mb-2">
+                Ready to narrow down your options?
+            </p>
+            <p class="text-sm text-blue-100 mb-4">
+                Explore generators in the size range that matches your calculation.
+            </p>
+            <a id="size-cta" target="_blank"
+                class="inline-block rounded-full bg-white px-5 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50 transition">
+                View Suitable Generator Sizes →
+            </a>
+            <a id="guide-cta" href="/portable-generator-basics/" target="_blank"
+                class="inline-block  rounded-full bg-white px-5 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50 transition">
+                Read our generator buying guide
+            </a>
+        </div>
+    </div>
+    {{ end }}
+
+    <!-- FAQs -->
+    {{ if eq $mode "full" }}
+    <section class="not-prose max-w-5xl mx-auto my-16">
+        <h2 class="text-3xl font-bold text-slate-900 mb-6">
+            Generator Size & Wattage Calculator – FAQs
+        </h2>
+
+        <div class="space-y-6
+                >[class^=faq-item]:bg-white
+                dark:>[class^=faq-item]:bg-slate-800
+                >[class^=faq-item]:border-slate-200
+                >[class^=faq-item] h3:text-slate-900
+                >[class^=faq-item] p:text-slate-600
+                >[class^=faq-item] p strong:text-slate-900
+                dark:>[class^=faq-item]:border-slate-900
+                dark:>[class^=faq-item] h3:text-white!
+                dark:>[class^=faq-item] p:text-slate-400!
+                dark:>[class^=faq-item] p strong:text-white!">
+            <!-- FAQ 1 -->
+            <div class="faq-item border  rounded-xl p-6">
+                <h3 class="font-semibold text-lg mb-2">
+                    What does a generator size calculator actually calculate?
+                </h3>
+                <p class="leading-relaxed">
+                    A generator size calculator estimates the <strong>minimum wattage</strong> your portable generator
+                    must provide to safely power your selected appliances. It adds up the
+                    <strong>total running watts</strong> and then accounts for the
+                    <strong>single largest starting (surge) wattage</strong>,
+                    since most appliances do not start at the same time.
+                </p>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="faq-item border  rounded-xl p-6">
+                <h3 class="font-semibold text-lg text-slate-900 mb-2">
+                    Is a generator wattage calculator different from a generator size calculator?
+                </h3>
+                <p class="leading-relaxed">
+                    In practice, no. A <strong>generator wattage calculator</strong> focuses on the electrical load
+                    (watts), while a <strong>generator size calculator</strong> translates that wattage
+                    into a practical generator capacity you can purchase.
+                    Both tools aim to answer the same question:
+                    <em>How many watts does my generator need?</em>
+                </p>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="faq-item border  rounded-xl p-6">
+                <h3 class="font-semibold text-lg text-slate-900 mb-2">
+                    Why does the calculator include starting watts?
+                </h3>
+                <p class="leading-relaxed">
+                    Many appliances with motors—such as refrigerators, air conditioners,
+                    sump pumps, and furnace blowers—require significantly more power
+                    for a brief moment when they start.
+                    Ignoring <strong>starting watts</strong> is one of the most common reasons
+                    generators overload or shut down unexpectedly.
+                </p>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="faq-item border  rounded-xl p-6">
+                <h3 class="font-semibold text-lg text-slate-900 mb-2">
+                    Why does this calculator add only the largest starting surge?
+                </h3>
+                <p class="leading-relaxed">
+                    This calculator assumes realistic usage.
+                    Appliances rarely start at the exact same moment.
+                    Instead of stacking all starting surges—which would dramatically oversize
+                    the generator—we add the <strong>largest single surge</strong> to the total
+                    running load. This produces a more accurate and practical recommendation
+                    for portable generator sizing.
+                </p>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="faq-item border  rounded-xl p-6">
+                <h3 class="font-semibold text-lg text-slate-900 mb-2">
+                    How accurate is this generator size calculator?
+                </h3>
+                <p class="leading-relaxed">
+                    This calculator provides a reliable estimate for most home backup
+                    and portable generator use cases.
+                    However, actual requirements may vary depending on appliance efficiency,
+                    age, power factor, and usage patterns.
+                    Always check the manufacturer specifications of both your appliances
+                    and the generator before making a final purchase decision.
+                </p>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="faq-item border  rounded-xl p-6">
+                <h3 class="font-semibold text-lg text-slate-900 mb-2">
+                    Should I choose a generator larger than the calculated result?
+                </h3>
+                <p class="leading-relaxed">
+                    In most cases, choosing the <strong>next standard generator size above</strong>
+                    the calculated result is a smart decision.
+                    This provides additional headroom, improves reliability,
+                    and allows for future appliance additions without overloading the generator.
+                </p>
+            </div>
+        </div>
+    </section>
+    {{ end }}
+
+</section>
+
+<script>
+    /* Generator Size Profiles */
+    // Hugo 把 YAML 转成 JSON，再赋值给 JS 常量
+    const GENERATOR_SIZE_PROFILES = {{ .Site.Data.generator_size_profiles | jsonify | safeJS }};
+
+    function withOptionalEl(id, callback) {
+        const el = document.getElementById(id);
+        // 元素不存在时打印友好提示，而非直接返回
+        if (!el) {
+            console.warn(`[withOptionalEl] 可选元素 #${id} 未找到，跳过回调执行`);
+            return;
+        }
+        // 元素存在时正常执行回调
+        callback(el);
+    }
+
+    /**
+     * 获取必传元素（不存在抛错），并执行回调操作
+     * @param {string} id - 元素ID
+     * @param {Function} callback - 拿到元素后执行的回调（参数为元素本身）
+     * @returns {HTMLElement} 返回获取到的元素（可选）
+     */
+    function getRequiredEl(id, callback) {
+        const el = document.getElementById(id);
+        if (!el) {
+            throw new Error(`Required element #${id} not found`);
+        }
+        // 如果传入了回调，执行回调并把元素传进去
+        if (typeof callback === 'function') {
+            callback(el);
+        }
+        // 可选：返回元素，方便后续链式操作
+        return el;
+    }
+
+    function getGeneratorProfileByWatts(watts) {
+        for (const key in GENERATOR_SIZE_PROFILES) {
+            const profile = GENERATOR_SIZE_PROFILES[key];
+            if (watts >= profile.min && watts <= profile.max) {
+                return profile;
+            }
+        }
+        return null;
+    }
+
+    function renderGeneratorProfile(watts) {
+        const profile = getGeneratorProfileByWatts(watts);
+        if (!profile) return;
+
+        withOptionalEl('most-people-choose', (el) => {
+            el.textContent = profile.mostPeopleChoose;
+        });
+
+        withOptionalEl('suitable-list', (el) => {
+            el.innerHTML = "";
+            profile.suitableFor.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                el.appendChild(li);
+            });
+        });
+
+        withOptionalEl('not-suitable-list', (el) => {
+            el.innerHTML = "";
+            profile.notSuitableFor.forEach(item => {
+                const li = document.createElement("li");
+                li.textContent = item;
+                el.appendChild(li);
+            });
+        });
+
+        withOptionalEl('pro-tip', (el) => {
+            el.textContent = profile.proTip;
+        });
+
+        if (profile.cta?.size_page) {
+            withOptionalEl('size-cta', el => {
+                el.href = profile.cta.size_page;
+                el.classList.remove('hidden');
+            });
+        }
+    }
+
+    function highlightGeneratorSize(recommendedSize) {
+        const rows = document.querySelectorAll('#size-map tr');
+        let matched = false;
+
+        rows.forEach(row => {
+            row.classList.remove(
+                'bg-blue-50',
+                'ring-2',
+                'ring-blue-500'
+            );
+
+            const min = parseInt(row.dataset.min, 10);
+            const max = parseInt(row.dataset.max, 10);
+
+            if (recommendedSize >= min && recommendedSize <= max) {
+                row.classList.add(
+                    'bg-blue-50',
+                    'ring-2',
+                    'ring-blue-500'
+                );
+                matched = true;
+            }
+        });
+
+        withOptionalEl('size-warning', (el) => {
+            el.classList.toggle('hidden', matched);
+        });
+    }
+
+    function calculateWatts() {
+        let totalRunning = 0;
+        let maxStartingIncrement = 0;
+
+        document.querySelectorAll('.appliance-check').forEach(cb => {
+            if (cb.checked) {
+                const run = parseInt(cb.dataset.run, 10);
+                const start = parseInt(cb.dataset.start, 10);
+                totalRunning += run;
+                maxStartingIncrement = Math.max(maxStartingIncrement, start - run);
+            }
+        });
+
+        const requiredSurge = totalRunning + maxStartingIncrement;
+        const recommendedSize = requiredSurge > 0
+            ? Math.ceil(requiredSurge * 1.2)
+            : 0;
+
+        getRequiredEl('total-run', (el) => {
+            el.innerText = totalRunning.toLocaleString();
+        });
+        getRequiredEl('total-start', (el) => {
+            el.innerText = requiredSurge.toLocaleString();
+        });
+        getRequiredEl('final-size', (el) => {
+            el.innerText = recommendedSize.toLocaleString();
+        });
+
+        if (!recommendedSize || recommendedSize <= 0) {
+            withOptionalEl('most-people-choose-container', (el) => {
+                el.classList.toggle('hidden', true);
+            });
+            withOptionalEl('capability-grid', (el) => {
+                el.classList.toggle('hidden', true);
+            });
+            withOptionalEl('decision-tip', (el) => {
+                el.classList.toggle('hidden', true);
+            });
+            withOptionalEl('helpful-tip', (el) => {
+                el.classList.toggle('hidden', true);
+            });
+            return;
+        }
+        withOptionalEl('most-people-choose-container', (el) => {
+            el.classList.toggle('hidden', false);
+        });
+        withOptionalEl('capability-grid', (el) => {
+            el.classList.toggle('hidden', false);
+        });
+        withOptionalEl('decision-tip', (el) => {
+            el.classList.toggle('hidden', false);
+        });
+        withOptionalEl('helpful-tip', (el) => {
+            el.classList.toggle('hidden', false);
+        });
+
+        renderGeneratorProfile(recommendedSize);
+
+        highlightGeneratorSize(recommendedSize);
+    }
+</script>

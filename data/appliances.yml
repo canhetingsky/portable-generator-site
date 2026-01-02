@@ -1,11 +1,14 @@
 - category: 'Kitchen'
+  common: true
   items:
     - name: 'Refrigerator/Freezer'
       running_watts: 700
       starting_watts: 2200
+      common: true
     - name: 'Microwave Oven'
       running_watts: 1000
       starting_watts: 1000
+      common: true
     - name: 'Coffee Maker'
       running_watts: 1000
       starting_watts: 1000
@@ -17,6 +20,7 @@
       starting_watts: 2100
 
 - category: 'Heating & Cooling'
+  common: true
   items:
     - name: 'Window AC (10,000 BTU)'
       running_watts: 1200
@@ -30,8 +34,10 @@
     - name: 'Sump Pump (1/2 HP)'
       running_watts: 1050
       starting_watts: 2200
+      common: true
 
 - category: 'Home Office & Entertainment'
+  common: true
   items:
     - name: 'Laptop Computer'
       running_watts: 100
@@ -39,6 +45,7 @@
     - name: 'LED Lights (5)'
       running_watts: 300
       starting_watts: 300
+      common: true
     - name: 'Desktop Computer'
       running_watts: 600
       starting_watts: 600
@@ -48,6 +55,7 @@
     - name: 'Wi-Fi Router'
       running_watts: 20
       starting_watts: 20
+      common: true
 
 - category: 'Laundry & Cleaning'
   items:

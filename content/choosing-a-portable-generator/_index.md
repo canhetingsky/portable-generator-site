@@ -30,6 +30,14 @@ The articles below explain each factor clearly and practically.
 
 ## Step 1: Understand Your Power Needs
 
+Before deciding on a specific generator, start by calculating how much total power (in watts) you need.
+
+👉 Use our **Portable Generator Size Calculator** to quickly estimate your exact load needs:
+
+**[Calculate Your Generator Size](/tools/generator-size/)**
+
+Once you have your calculated wattage, continue reading below to learn how to choose the right generator type and features.
+
 ### 🔢 How Many Watts Do You Need?
 
 One of the most common mistakes is underestimating or overestimating power requirements.
@@ -42,6 +50,8 @@ This guide explains:
 - Why oversizing can be inefficient  
 
 → [How Many Watts Do I Need for a Portable Generator?](/posts/how-many-watts-do-i-need-for-a-portable-generator/)
+
+This calculation is the foundation of your decision — you can’t choose a generator without knowing the size you actually need. Once you have your estimated wattage, continue reading below to match that load with the right generator features and type.
 
 ---
 
@@ -58,7 +68,7 @@ Learn the differences in:
 - Fuel efficiency  
 - Suitability for electronics  
 
-→ [Inverter vs Conventional Generator: What’s the Difference?](/posts/inverter-vs-conventional-generator/)
+Once you know your power needs from the calculator, selecting the right generator type ([inverter vs conventional](/posts/inverter-vs-conventional-generator/)) helps match that size to your priorities — quiet operation, fuel efficiency, or rugged power.
 
 ---
 
@@ -76,9 +86,19 @@ This comparison helps you decide:
 
 ---
 
-## Step 3: Match the Generator to Your Use Case
+## Step 3: Match the Generator Size to Your Use Case
 
-Different situations require different priorities.
+Once you’ve calculated your total wattage, the next step is understanding what that generator size can realistically power in real-world scenarios.
+
+### Common Generator Size Ranges and Use Cases
+
+- **Small to Medium Backup (around 2,000–3,000 watts)**  
+  Suitable for essential appliances like a refrigerator, lights, Wi-Fi router, and small electronics during short power outages.  
+  👉 [2000–3000W Portable Generator Guide](/generator-sizes/2000-3000-watt/)
+
+- **Larger Home Backup Needs (5,000–8,000W)**  
+  If your calculation shows significantly higher wattage, you may need a larger generator capable of running multiple appliances or high-surge devices. In this case, pay close attention to starting watts, fuel consumption, and runtime.
+  👉 [5000–8000W Portable Generator Guide](/generator-sizes/5000-8000-watt/)
 
 ### 🏢 Apartment Power Outages
 
@@ -118,6 +138,8 @@ This guide explains:
 
 → [Gas vs Dual Fuel Generators](/posts/gas-vs-dual-fuel-generators/)
 
+Fuel choice also interacts with your generator size — larger generators tend to consume fuel faster, so ensure your fuel plan matches your calculated load and expected runtime.
+
 ---
 
 ## Common Generator Buying Mistakes
@@ -129,6 +151,9 @@ Many buyers run into problems due to:
 - Underestimating noise levels  
 - Overlooking safety constraints  
 - Buying a generator unsuitable for their living situation  
+
+Avoid the most common mistakes by starting with your exact power needs first —  
+👉**[Use the Generator Size Calculator now:](/tools/generator-size/)**
 
 The guides above are designed to help you avoid these issues.
 
@@ -144,3 +169,26 @@ For safety considerations related to generator use, see:
 
 - [Portable Generator Safety Guide](/generator-safety/)
 - [Portable Generator Safety Checklist](/posts/portable-generator-safety-checklist/)
+
+---
+
+## Next Steps: Take Action
+
+Now that you understand how to choose a generator:
+
+### 1. Calculate Your Exact Power Needs  
+
+👉 **[Generator Size Calculator](/tools/generator-size/)**
+
+### 2. Match Your Size to Real World Scenarios  
+
+Choose a size guide that fits your calculated result:
+
+- ➤ [2000–3000W Guide](/generator-sizes/2000-3000-watt/)
+- ➤ [5000–8000W Guide](/generator-sizes/5000-8000-watt/)
+- ➤ [Other Size Guides](/generator-sizes/)
+
+### 3. Explore Specific Use Cases
+
+- ➤ [Best Generator for Refrigerator](/best-generator-for-refrigerator/)
+- ➤ [Best Generator for Home Backup](/best-portable-generators/) (hub)

@@ -9,7 +9,6 @@ slug: "how-many-watts-do-i-need-for-a-portable-generator"
 custom:
     schema:
         - schema-wattage-calculator-sw
-        - schema-wattage-calculator-faq
     use_tailwindcss: true
     math: true
     editor_pick: true
@@ -178,7 +177,7 @@ This process functions as a **manual generator size calculator** and produces re
 
 Ready to skip the manual math? Use the tool below to select your appliances. Our algorithm automatically applies the formula above to give you a safe, reliable recommendation.
 
-{{< generator-wattage-calculator >}}
+{{< generator-wattage-calculator mode="simple">}}
 
 ---
 
