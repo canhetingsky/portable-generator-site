@@ -1,0 +1,102 @@
+
+ultraLight:
+  min: 0
+  max: 1000
+  label: "Ultra-Light Duty"
+  mostPeopleChoose: "1,000 W inverter generators"
+  suitableFor:
+    - "Phones, laptops, and routers"
+    - "LED lighting"
+    - "Low-power medical devices"
+  notSuitableFor:
+    - "Refrigerators"
+    - "Microwaves"
+    - "Heating appliances"
+  proTip: "This size offers very limited headroom. Avoid running multiple devices at the same time."
+  commonSizes:
+    - min: 0
+      max: 1000
+      load: "Up to 1,000 W"
+      recommend: "1,000–1,500 W"
+basic:
+  min: 1001
+  max: 2000
+  label: "Basic Emergency Backup"
+  mostPeopleChoose: "2,000 W portable generators"
+  suitableFor:
+    - "Refrigerator"
+    - "Lights and electronics"
+    - "Short-term power outages"
+  notSuitableFor:
+    - "Space heaters"
+    - "Window air conditioners"
+    - "Multiple kitchen appliances simultaneously"
+  proTip: "If your calculated result is near the upper end of this range, stepping up to a 2,000 W class generator improves reliability."
+  commonSizes:
+    - min: 1001
+      max: 2000
+      load: "1000 to 2,000 W"
+      recommend: "2,000–2,500 W"
+popular:
+  min: 2001
+  max: 3000
+  label: "Most Popular Choice"
+  mostPeopleChoose: "3,000 W portable generators"
+  suitableFor:
+    - "Refrigerator and microwave"
+    - "Window air conditioner"
+    - "Home office equipment"
+  notSuitableFor:
+    - "Central air conditioning"
+    - "Electric dryers"
+    - "Large power tools at the same time"
+  proTip: "This is the most common generator size for homeowners seeking flexibility and safety margin."
+  commonSizes:
+    - min: 2001
+      max: 3000
+      load: "2,000–3,000 W"
+      recommend: "3,000–3,500 W"
+power:
+  min: 3001
+  max: 5000
+  label: "High-Capacity Home Backup"
+  mostPeopleChoose: "4,000–5,000 W generators"
+  suitableFor:
+    - "Multiple household appliances"
+    - "Sump pumps"
+    - "Furnace blower motors"
+    - "Extended outage scenarios"
+  notSuitableFor:
+    - "Central AC combined with electric heating"
+    - "Running all high-load appliances simultaneously"
+  proTip: "At this capacity, consider installing a transfer switch for safer home integration."
+  commonSizes:
+    - min: 3001
+      max: 4000
+      load: "3,000–4,000 W"
+      recommend: "4,000–4,500 W"
+    - min: 4001
+      max: 5000
+      load: "4,000–5,000 W"
+      recommend: "5,000–5,500 W"
+wholeHome:
+  min: 5001
+  max: 99999  # 一个足够大的值
+  label: "Whole-Home Class"
+  mostPeopleChoose: "7,500 W or larger generators"
+  suitableFor:
+    - "Most essential home circuits"
+    - "Central AC with load management"
+    - "Long-duration outages"
+  notSuitableFor:
+    - "Unlimited simultaneous high-wattage loads without planning"
+  proTip: "For generators above 5,000 W, fuel type, runtime, and installation matter more than wattage alone."
+  commonSizes:
+    - min: 5001
+      max: 6500
+      load: "5,000–6,500 W"
+      recommend: "7,000–7,500 W"
+    - min: 6501
+      max: 8000
+      load: "6,500–8,000 W"
+      recommend: "8,000–9,000 W"

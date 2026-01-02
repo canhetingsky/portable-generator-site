@@ -15,6 +15,19 @@
 {{ if .Params.custom.use_tailwindcss }}
 <!-- 1. 先引入 Tailwind CSS -->
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<!-- 启用深色模式 -->
+<script>
+    tailwind.config = {
+        darkMode: 'media', // 核心：基于系统 prefers-color-scheme
+        theme: {
+            extend: {},
+        },
+        content: [
+            './content/**/*.md', // 包含 Markdown 文件
+            './layouts/**/*.html', // 包含模板文件
+        ],
+    }
+</script>
 
 <!-- 2. 修复 Tailwind CSS 导致的列表样式丢失问题 -->
 <style>
