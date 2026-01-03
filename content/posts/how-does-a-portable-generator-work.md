@@ -108,7 +108,7 @@ Portable generator output is usually measured in **watts**.
 There are two important ratings:
 
 * **Running watts**: the power needed to keep devices operating
-* **Starting watts**: the extra power required to start motors or compressors
+* **Starting watts**: the **temporary peak power** required at startup, which is higher than normal running power
 
 Many appliances draw significantly more power when starting than when running. Understanding this difference is essential when calculating generator capacity.
 

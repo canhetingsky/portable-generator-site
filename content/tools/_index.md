@@ -3,17 +3,6 @@ title: "Generator Tools & Calculators"
 description: "Free tools to help you choose the right portable generator, calculate power requirements, and make informed backup power decisions."
 slug: "tools"
 draft: false
-
-categories:
-
-- Generator Tools
-
-tags:
-
-- generator calculator
-- generator tools
-- power calculator
-- portable generator sizing
 ---
 
 Choosing the right portable generator starts with accurate information. Our tools are designed to help you calculate power needs, understand generator capacity, and make smarter decisions before you buy.

@@ -18,6 +18,12 @@
     - name: 'Electric Stove (Per Element)'
       running_watts: 2100
       starting_watts: 2100
+    - name: 'Bar Fridge'
+      running_watts: 180
+      starting_watts: 600
+    - name: 'Household Kettle'
+      running_watts: 2200
+      starting_watts: 2400
 
 - category: 'Heating & Cooling'
   common: true
@@ -35,6 +41,12 @@
       running_watts: 1050
       starting_watts: 2200
       common: true
+    - name: 'Portable Fan'
+      running_watts: 40
+      starting_watts: 120
+    - name: 'Caravan Air-conditioning'
+      running_watts: 1500
+      starting_watts: 2700
 
 - category: 'Home Office & Entertainment'
   common: true
@@ -68,3 +80,28 @@
     - name: 'Vacuum Cleaner'
       running_watts: 1400
       starting_watts: 1400
+
+- category: 'Tools & Workshop'
+  common: false
+  items:
+    - name: 'Electric Hand Drill (1/2")'
+      running_watts: 700
+      starting_watts: 1000
+    - name: 'Belt Sander'
+      running_watts: 950
+      starting_watts: 2400
+    - name: 'Electric Chainsaw (14", 1hp)'
+      running_watts: 1100
+      starting_watts: 1100
+    - name: 'High Pressure Washer (1hp)'
+      running_watts: 1200
+      starting_watts: 3600
+    - name: 'Bench Grinder (8")'
+      running_watts: 1400
+      starting_watts: 2500
+    - name: 'Air Compressor (1hp)'
+      running_watts: 1400
+      starting_watts: 3600
+    - name: 'Circular Saw (7 1/4")'
+      running_watts: 1500
+      starting_watts: 2400

@@ -26,8 +26,8 @@ Every portable generator is defined by its wattage capacity. This capacity deter
 
 Generators are rated using two numbers:
 
-- **Running watts**: the continuous power the generator can supply
-- **Starting watts**: the extra surge of power required to start motors or compressors
+- **Running watts**: the **continuous power** the generator can supply
+- **Starting watts**: the **temporary peak power** required to start motors or compressors
 
 Many appliances with motors — such as refrigerators, pumps, and air conditioners — require significantly more power for a few seconds when starting than they do while running.
 

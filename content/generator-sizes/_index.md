@@ -26,7 +26,7 @@ If you haven’t calculated your power requirements yet, start here:
 Generator size refers to the amount of electrical power a generator can deliver, typically measured in **running watts** and **starting (surge) watts**.
 
 - **Running watts** indicate how much power a generator can supply continuously  
-- **Starting watts** account for the extra power required when motors and compressors start
+- **Starting watts** represent the **temporary peak power** required when a motor-driven appliance starts, which is higher than its normal running power
 
 Choosing the right generator size helps prevent overloads, protects your appliances, and avoids unnecessary fuel consumption.
 
@@ -34,26 +34,58 @@ Choosing the right generator size helps prevent overloads, protects your applian
 
 ## Common Portable Generator Size Ranges
 
-Portable generators are often grouped into size ranges based on wattage. Each range is suitable for different types of use cases.
+Portable generators are commonly grouped by wattage ranges.  
+Each range represents a different level of power capacity and is suited for specific use cases.
 
-### 2000–3000 Watt Generators
+Understanding these categories helps you quickly narrow down the generator size that fits your needs.
 
-This size range is ideal for powering essential household appliances during short power outages.
+---
 
-**Common uses include:**
+### 🔹 1000–2000 Watt Generators
 
-- Refrigerator or freezer
-- Lights
-- Wi-Fi router
-- TV or laptop
-- Small kitchen appliances
+Best for light-duty and portable use.
 
-👉 **[Learn more about 2000–3000W generators](/generator-sizes/2000-3000-watt/)**
+- Suitable for basic household essentials
+- Ideal for apartments, camping, and short outages
+- Focuses on portability, quiet operation, and fuel efficiency
 
-<!--
-Future size ranges can be added here as new pages are published.
-Only link to sizes that already exist to avoid broken or empty pages.
--->
+👉 **[1000–2000 Watt Generator Guide](/generator-sizes/1000-2000-watt/)**
+
+---
+
+### 🔹 2000–3000 Watt Generators
+
+A popular choice for basic home backup.
+
+- Handles essential home power needs
+- Suitable for small homes and RVs
+- Balances power output and portability
+
+👉 **[2000–3000 Watt Generator Guide](/generator-sizes/2000-3000-watt/)**
+
+---
+
+### 🔹 3000–5000 Watt Generators
+
+Versatile mid-range generators.
+
+- Supports multiple household power needs
+- Designed for moderate to extended outages
+- Offers greater flexibility for simultaneous use
+
+👉 **[3000–5000 Watt Generator Guide](/generator-sizes/3000-5000-watt/)**
+
+---
+
+### 🔹 5000–8000 Watt Generators
+
+Heavy-duty portable generators.
+
+- Covers high-demand and whole-home essentials
+- Built for extended outages and intensive use
+- Suitable for residential and professional scenarios
+
+👉 **[5000–8000 Watt Generator Guide](/generator-sizes/5000-8000-watt/)**
 
 ---
 

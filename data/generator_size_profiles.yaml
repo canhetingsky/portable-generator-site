@@ -4,6 +4,9 @@ ultraLight:
   max: 1000
   label: "Ultra-Light Duty"
   mostPeopleChoose: "1,000 W inverter generators"
+  cta:
+    size_page: "/generator-sizes/1000-2000-watt/"
+    buying_guide: "/best-portable-generators/"
   suitableFor:
     - "Phones, laptops, and routers"
     - "LED lighting"
@@ -23,6 +26,9 @@ basic:
   max: 2000
   label: "Basic Emergency Backup"
   mostPeopleChoose: "2,000 W portable generators"
+  cta:
+    size_page: "/generator-sizes/1000-2000-watt/"
+    buying_guide: "/best-portable-generators/"
   suitableFor:
     - "Refrigerator"
     - "Lights and electronics"
@@ -64,6 +70,9 @@ power:
   max: 5000
   label: "High-Capacity Home Backup"
   mostPeopleChoose: "4,000–5,000 W generators"
+  cta:
+    size_page: "/generator-sizes/3000-5000-watt/"
+    buying_guide: "/best-portable-generators/"
   suitableFor:
     - "Multiple household appliances"
     - "Sump pumps"
@@ -87,6 +96,9 @@ wholeHome:
   max: 99999  # 一个足够大的值
   label: "Whole-Home Class"
   mostPeopleChoose: "7,500 W or larger generators"
+  cta:
+    size_page: "/generator-sizes/5000-8000-watt/"
+    buying_guide: "/best-portable-generators/"
   suitableFor:
     - "Most essential home circuits"
     - "Central AC with load management"

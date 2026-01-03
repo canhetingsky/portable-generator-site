@@ -40,7 +40,7 @@ The best portable generator for home backup is one that reliably supports these 
 Generators are rated by wattage, but appliances do not all consume power the same way.
 
 - **Running watts**: Power needed to operate continuously  
-- **Starting watts**: Extra surge required when motors start  
+- **Starting watts**: **Temporary peak power** required when motors start  
 
 Common examples:
 
