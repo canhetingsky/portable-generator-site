@@ -137,7 +137,25 @@
         });
 
         [valueEl, voltageEl, factorEl].forEach(el => {
-            el && el.addEventListener('input', calculateWatts);
+            if (!el) return;
+
+            // 1. 您的原始逻辑：实时输入时计算结果
+            el.addEventListener('input', calculateWatts);
+
+            // 2. 新增逻辑：针对 Power Factor 失去焦点时自动纠错
+            if (el.id === 'wc-factor') {
+                el.addEventListener('blur', function () {
+                    let val = parseFloat(this.value);
+                    if (isNaN(val)) return;
+
+                    if (val < 0.8) {
+                        this.value = "0.8"; // 自动修正为最小值
+                    } else if (val > 1.0) {
+                        this.value = "1.0"; // 自动修正为最大值
+                    }
+                    calculateWatts(); // 修正后重新触发一次计算
+                });
+            }
         });
 
         updateVisibility();

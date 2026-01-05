@@ -119,6 +119,6 @@ When selecting a 5000–8000W generator, focus on:
 
 ## Related Guides
 
-- [How Many Watts Do I Need for a Portable Generator?](/how-many-watts-do-i-need-for-a-portable-generator/)
+- [How Many Watts Do I Need for a Portable Generator?](/posts/how-many-watts-do-i-need-for-a-portable-generator/)
 - [Portable Generator Size Calculator](/tools/generator-size/)
 - [Choosing a Portable Generator: Complete Buying Guide](/choosing-a-portable-generator/)

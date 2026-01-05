@@ -72,6 +72,75 @@
             </div>
         </div>
 
+        <!-- Custom Appliances Section (Advanced) -->
+        <div class="px-6 py-6 bg-slate-50 border-t border-slate-200">
+            <div class="mb-4">
+                <h4
+                    class="!text-amber-700 font-bold border-b-2 border-amber-100 pb-1 mb-3 uppercase text-xs tracking-wider">
+                    Add Custom Appliances (Advanced)
+                </h4>
+                <p class="text-sm text-slate-600 mb-4">
+                    Add appliances not listed above. <strong>Running watts</strong> are the continuous power needed.
+                    <strong>Starting watts</strong> are the surge power required when the device first turns on (usually
+                    2-3x running watts).
+                </p>
+            </div>
+
+            <!-- Custom Appliance Form -->
+            <div class="bg-white rounded-xl border border-slate-200 p-4 mb-4">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <!-- Device Name (Optional) -->
+                    <div>
+                        <label for="custom-device-name" class="block text-xs font-semibold text-slate-700 mb-1">
+                            Device Name <span class="text-slate-400 font-normal">(optional)</span>
+                        </label>
+                        <input type="text" id="custom-device-name" placeholder="e.g., Well Pump"
+                            class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition">
+                    </div>
+
+                    <!-- Running Watts (Required) -->
+                    <div>
+                        <label for="custom-running-watts" class="block text-xs font-semibold text-slate-700 mb-1">
+                            Running Watts <span class="text-red-500">*</span>
+                            <span class="text-slate-400 font-normal">(required, watts)</span>
+                        </label>
+                        <input type="number" id="custom-running-watts" min="1" placeholder="e.g., 800"
+                            class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition">
+                    </div>
+
+                    <!-- Starting Watts (Optional) -->
+                    <div>
+                        <label for="custom-starting-watts" class="block text-xs font-semibold text-slate-700 mb-1">
+                            Starting Watts <span class="text-slate-400 font-normal">(optional, watts)</span>
+                        </label>
+                        <input type="number" id="custom-starting-watts" min="1" placeholder="e.g., 1600"
+                            class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition">
+                    </div>
+                </div>
+
+                <!-- Add Button & Error Message -->
+                <div class="mt-4 flex items-center justify-between">
+                    <p id="custom-appliance-error" class="text-sm text-red-600 hidden"></p>
+                    <button onclick="addCustomAppliance()"
+                        class="ml-auto px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold text-sm rounded-lg transition-colors flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                        </svg>
+                        Add Appliance
+                    </button>
+                </div>
+            </div>
+
+            <!-- Custom Appliances List -->
+            <div id="custom-appliances-list" class="space-y-2 hidden">
+                <div class="text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2">
+                    Your Custom Appliances
+                </div>
+                <!-- Custom appliance items will be inserted here -->
+            </div>
+        </div>
+
         <div class="px-8 pt-8 pb-1 bg-slate-900 text-slate-100">
             <!-- Calculation Explanation -->
             <p class="text-slate-300 text-sm leading-relaxed mb-6">
@@ -413,6 +482,146 @@
     // Hugo 把 YAML 转成 JSON，再赋值给 JS 常量
     const GENERATOR_SIZE_PROFILES = {{ .Site.Data.generator_size_profiles | jsonify | safeJS }};
 
+    /* Custom Appliances State Management */
+    // Array to store custom appliances added by the user
+    let customAppliances = [];
+
+    /**
+     * Add a custom appliance from the form input
+     * Validates input and adds to the custom appliances array if valid
+     */
+    function addCustomAppliance() {
+        const nameInput = document.getElementById('custom-device-name');
+        const runningInput = document.getElementById('custom-running-watts');
+        const startingInput = document.getElementById('custom-starting-watts');
+        const errorEl = document.getElementById('custom-appliance-error');
+
+        // Get values
+        const name = nameInput.value.trim() || 'Custom Appliance';
+        const running = parseInt(runningInput.value, 10);
+        let starting = parseInt(startingInput.value, 10);
+
+        // Clear previous error
+        errorEl.classList.add('hidden');
+        errorEl.textContent = '';
+
+        // Validation
+        if (!running || running <= 0) {
+            showCustomApplianceError('Please enter a valid running wattage (must be greater than 0).');
+            return;
+        }
+
+        // If starting watts is not provided or invalid, default to running watts
+        if (!starting || starting <= 0) {
+            starting = running;
+        }
+
+        // Validate that starting watts is not less than running watts
+        if (starting < running) {
+            showCustomApplianceError('Starting watts must be equal to or greater than running watts.');
+            return;
+        }
+
+        // Create custom appliance object
+        const appliance = {
+            id: Date.now(), // Unique ID for removal
+            name: name,
+            running: running,
+            starting: starting,
+            source: 'custom'
+        };
+
+        // Add to array
+        customAppliances.push(appliance);
+
+        // Clear form
+        nameInput.value = '';
+        runningInput.value = '';
+        startingInput.value = '';
+        nameInput.focus();
+
+        // Update UI
+        renderCustomAppliancesList();
+        calculateWatts();
+    }
+
+    /**
+     * Show an error message in the custom appliance form
+     * @param {string} message - The error message to display
+     */
+    function showCustomApplianceError(message) {
+        const errorEl = document.getElementById('custom-appliance-error');
+        errorEl.textContent = message;
+        errorEl.classList.remove('hidden');
+    }
+
+    /**
+     * Remove a custom appliance by its ID
+     * @param {number} id - The unique ID of the appliance to remove
+     */
+    function removeCustomAppliance(id) {
+        customAppliances = customAppliances.filter(app => app.id !== id);
+        renderCustomAppliancesList();
+        calculateWatts();
+    }
+
+    /**
+     * Render the list of custom appliances with remove buttons
+     * Updates the custom appliances list container
+     */
+    function renderCustomAppliancesList() {
+        const listContainer = document.getElementById('custom-appliances-list');
+        const titleDiv = listContainer.querySelector('.text-xs.font-semibold');
+
+        // Clear existing items (keep the title)
+        listContainer.innerHTML = '';
+        listContainer.appendChild(titleDiv);
+
+        if (customAppliances.length === 0) {
+            listContainer.classList.add('hidden');
+            return;
+        }
+
+        listContainer.classList.remove('hidden');
+
+        customAppliances.forEach(appliance => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'flex items-center justify-between bg-white border border-slate-200 rounded-lg p-3 transition hover:border-amber-300';
+
+            itemDiv.innerHTML = `
+                <div class="flex-1">
+                    <div class="font-medium text-slate-900">${escapeHtml(appliance.name)}</div>
+                    <div class="text-sm text-slate-600 mt-1">
+                        <span class="font-mono">${appliance.running.toLocaleString()} W</span>
+                        <span class="text-slate-400 mx-1">→</span>
+                        <span class="font-mono text-orange-600">${appliance.starting.toLocaleString()} W</span>
+                        <span class="text-xs text-slate-500 ml-1">⚡ start</span>
+                    </div>
+                </div>
+                <button onclick="removeCustomAppliance(${appliance.id})"
+                    class="ml-3 p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                    title="Remove this appliance">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                </button>
+            `;
+
+            listContainer.appendChild(itemDiv);
+        });
+    }
+
+    /**
+     * Escape HTML to prevent XSS
+     * @param {string} text - The text to escape
+     * @returns {string} The escaped text
+     */
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     function withOptionalEl(id, callback) {
         const el = document.getElementById(id);
         // 元素不存在时打印友好提示，而非直接返回
@@ -546,17 +755,54 @@
         });
     }
 
-    function calculateWatts() {
-        let totalRunning = 0;
-        let maxStartingIncrement = 0;
+    /**
+     * Get a unified list of all loads (both preset and custom appliances)
+     * @returns {Array} Array of load objects with name, running, starting, and source
+     */
+    function getAllLoads() {
+        const loads = [];
 
+        // Add selected preset appliances
         document.querySelectorAll('.appliance-check').forEach(cb => {
             if (cb.checked) {
                 const run = parseInt(cb.dataset.run, 10);
                 const start = parseInt(cb.dataset.start, 10);
-                totalRunning += run;
-                maxStartingIncrement = Math.max(maxStartingIncrement, start - run);
+                // Get the appliance name from the label text
+                const name = cb.closest('label').querySelector('.font-medium').textContent.trim();
+
+                loads.push({
+                    name: name,
+                    running: run,
+                    starting: start,
+                    source: 'preset'
+                });
             }
+        });
+
+        // Add custom appliances
+        customAppliances.forEach(appliance => {
+            loads.push({
+                name: appliance.name,
+                running: appliance.running,
+                starting: appliance.starting,
+                source: 'custom'
+            });
+        });
+
+        return loads;
+    }
+
+    function calculateWatts() {
+        // Use unified load list instead of directly reading checkboxes
+        const allLoads = getAllLoads();
+        console.log('allLoads', allLoads);
+
+        let totalRunning = 0;
+        let maxStartingIncrement = 0;
+
+        allLoads.forEach(load => {
+            totalRunning += load.running;
+            maxStartingIncrement = Math.max(maxStartingIncrement, load.starting - load.running);
         });
 
         const requiredSurge = totalRunning + maxStartingIncrement;

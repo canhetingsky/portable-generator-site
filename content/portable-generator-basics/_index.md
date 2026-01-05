@@ -60,7 +60,7 @@ This article covers:
 
 Standby generators are permanently installed and automatically supply power during outages. Portable generators offer flexibility and lower upfront cost but require manual setup.
 
-→ [Portable Generator vs Standby Generator](/posts/portable-generator-vs-standby-generator/)
+→ [Portable Generator vs Standby Generator](/posts/portable-vs-standby-generator/)
 
 ---
 

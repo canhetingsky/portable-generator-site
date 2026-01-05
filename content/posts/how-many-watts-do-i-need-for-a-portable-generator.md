@@ -175,7 +175,7 @@ Adding every appliance's starting watts together would dramatically oversize the
 
 To avoid overload and improve reliability, add **20–25% extra capacity**.
 
-3,620 W × 1.25 ≈ **4,525 W**
+3,620 W × 1.2 ≈ **4,344 W**
 
 👉 In this example, a **4,500–5,000 watt generator** would be an appropriate choice.
 
@@ -337,7 +337,7 @@ Refrigerator startup increment:
 
 1,100 + 1,500 = **2,600 W**
 
-**Recommended generator size:**
+**Recommended generator size:**  
  👉 A **3000 watt generator** is sufficient for this setup.
 
 ---
