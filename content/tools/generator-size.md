@@ -7,7 +7,7 @@ slug: "generator-size"
 custom:
     schema:
         - schema-wattage-calculator-sw
-        - schema-wattage-calculator-faq
+        - schema-wattage-calculator-quick-questions
     use_tailwindcss: true
     # 工具专用字段（新增）
     tool_type: "calculator"

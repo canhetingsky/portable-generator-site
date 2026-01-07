@@ -13,10 +13,20 @@
         <div class="px-6 py-1 bg-slate-200 border-b border-slate-200 text-center md:text-left">
             <h3 class="text-2xl font-bold text-slate-900 m-0" id="generator-size-calculator">Generator Size Calculator
             </h3>
-            <p class="text-slate-600 mt-2">Check the appliances you need to power to find the right generator size.</p>
+            <p class="text-slate-700 font-semibold mt-2">Estimate your generator size based on <strong>real
+                    appliances</strong>, including running watts and startup surge — not guesswork.</p>
+            <p class="text-sm text-slate-600 mt-2">Select the appliances you plan to run at the same time, or add your
+                own custom appliances to calculate the generator size you actually need.</p>
         </div>
 
         <div class="px-6 py-1">
+            <div class="mb-5">
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Select Your Appliances</h4>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    Choose the appliances you expect to run <strong>simultaneously</strong>.<br />
+                    Running watts are added together, while only the <strong>largest startup surge</strong> is applied.
+                </p>
+            </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-2">
                 {{ range .Site.Data.appliances }}
                 {{ if or .common (eq $mode "full") }}
@@ -73,16 +83,23 @@
         </div>
 
         <!-- Custom Appliances Section (Advanced) -->
+        {{ if eq $mode "full" }}
         <div class="px-6 py-6 bg-slate-50 border-t border-slate-200">
             <div class="mb-4">
                 <h4
                     class="!text-amber-700 font-bold border-b-2 border-amber-100 pb-1 mb-3 uppercase text-xs tracking-wider">
                     Add Custom Appliances (Advanced)
                 </h4>
-                <p class="text-sm text-slate-600 mb-4">
-                    Add appliances not listed above. <strong>Running watts</strong> are the continuous power needed.
-                    <strong>Starting watts</strong> are the surge power required when the device first turns on (usually
-                    2-3x running watts).
+                <p class="text-sm text-slate-600 mb-4 space-y-2">
+                    <span>If your appliance is not listed, you can add it here.</span>
+                <ul class="ml-4 space-y-1 list-disc">
+                    <li><strong class="text-slate-700">Running watts</strong>: the power required during normal
+                        operation</li>
+                    <li><strong class="text-slate-700">Starting watts</strong>: the brief surge required when the
+                        appliance starts</li>
+                </ul>
+                <span class="text-amber-700">If no starting watts are entered, the calculator assumes <strong>starting
+                        watts = running watts</strong>.</span>
                 </p>
             </div>
 
@@ -140,6 +157,7 @@
                 <!-- Custom appliance items will be inserted here -->
             </div>
         </div>
+        {{ end }}
 
         <div class="px-8 pt-8 pb-1 bg-slate-900 text-slate-100">
             <!-- Calculation Explanation -->
@@ -267,12 +285,26 @@
         <!-- helpful tip -->
         {{ if eq $mode "full" }}
         <div id="helpful-tip"
-            class="hidden bg-slate-100 rounded-xl border border-slate-200 bg-slate-50 px-10 py-3 text-sm text-slate-600">
-            Once you know your generator size,
-            <a href="/posts/how-long-can-a-portable-generator-run-continuously/#generator-runtime-estimator"
-                class="font-semibold text-blue-600 hover:underline" target="_blank">
-                estimate how long it can run on a full tank.
-            </a>
+            class="hidden bg-gradient-to-r from-blue-50 to-amber-50 rounded-xl border border-blue-200 px-6 py-4 text-sm text-slate-700">
+            <div class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div class="flex-1">
+                    <span class="text-slate-700">Not sure how these numbers are calculated?</span>
+                    <a href="/tools/generator-size-calculator-guide/"
+                        class="ml-2 font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 transition-colors"
+                        target="_blank">
+                        Learn how the calculator works
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
         {{ end }}
 
@@ -373,7 +405,7 @@
     {{ if eq $mode "full" }}
     <section class="not-prose max-w-5xl mx-auto my-16">
         <h2 class="text-3xl font-bold text-slate-900 mb-6">
-            Generator Size & Wattage Calculator – FAQs
+            Quick Questions
         </h2>
 
         <div class="space-y-6
@@ -389,88 +421,44 @@
                 dark:>[class^=faq-item] p strong:text-white!">
             <!-- FAQ 1 -->
             <div class="faq-item border  rounded-xl p-6">
-                <h3 class="font-semibold text-lg mb-2">
-                    What does a generator size calculator actually calculate?
+                <h3 class="font-semibold text-lg text-slate-900 mb-2">
+                    Why does the recommended generator size seem larger than expected?
                 </h3>
                 <p class="leading-relaxed">
-                    A generator size calculator estimates the <strong>minimum wattage</strong> your portable generator
-                    must provide to safely power your selected appliances. It adds up the
-                    <strong>total running watts</strong> and then accounts for the
-                    <strong>single largest starting (surge) wattage</strong>,
-                    since most appliances do not start at the same time.
+                    Because the calculation includes startup surge and a safety margin to avoid overload and unexpected shutdowns.
                 </p>
             </div>
 
             <!-- FAQ 2 -->
             <div class="faq-item border  rounded-xl p-6">
                 <h3 class="font-semibold text-lg text-slate-900 mb-2">
-                    Is a generator wattage calculator different from a generator size calculator?
+                    Do I need to include every appliance I own?
                 </h3>
                 <p class="leading-relaxed">
-                    In practice, no. A <strong>generator wattage calculator</strong> focuses on the electrical load
-                    (watts), while a <strong>generator size calculator</strong> translates that wattage
-                    into a practical generator capacity you can purchase.
-                    Both tools aim to answer the same question:
-                    <em>How many watts does my generator need?</em>
+                    No. Only include appliances you plan to run at the same time.
                 </p>
             </div>
 
             <!-- FAQ 3 -->
             <div class="faq-item border  rounded-xl p-6">
                 <h3 class="font-semibold text-lg text-slate-900 mb-2">
-                    Why does the calculator include starting watts?
+                    Does fuel type affect the calculated generator size?
                 </h3>
                 <p class="leading-relaxed">
-                    Many appliances with motors—such as refrigerators, air conditioners,
-                    sump pumps, and furnace blowers—require significantly more power
-                    for a brief moment when they start.
-                    Ignoring <strong>starting watts</strong> is one of the most common reasons
-                    generators overload or shut down unexpectedly.
+                    Yes. Generators typically produce less power when running on propane compared to gasoline, which may require additional capacity.
                 </p>
             </div>
+        </div>
 
-            <!-- FAQ 4 -->
-            <div class="faq-item border  rounded-xl p-6">
-                <h3 class="font-semibold text-lg text-slate-900 mb-2">
-                    Why does this calculator add only the largest starting surge?
-                </h3>
-                <p class="leading-relaxed">
-                    This calculator assumes realistic usage.
-                    Appliances rarely start at the exact same moment.
-                    Instead of stacking all starting surges—which would dramatically oversize
-                    the generator—we add the <strong>largest single surge</strong> to the total
-                    running load. This produces a more accurate and practical recommendation
-                    for portable generator sizing.
-                </p>
-            </div>
-
-            <!-- FAQ 5 -->
-            <div class="faq-item border  rounded-xl p-6">
-                <h3 class="font-semibold text-lg text-slate-900 mb-2">
-                    How accurate is this generator size calculator?
-                </h3>
-                <p class="leading-relaxed">
-                    This calculator provides a reliable estimate for most home backup
-                    and portable generator use cases.
-                    However, actual requirements may vary depending on appliance efficiency,
-                    age, power factor, and usage patterns.
-                    Always check the manufacturer specifications of both your appliances
-                    and the generator before making a final purchase decision.
-                </p>
-            </div>
-
-            <!-- FAQ 6 -->
-            <div class="faq-item border  rounded-xl p-6">
-                <h3 class="font-semibold text-lg text-slate-900 mb-2">
-                    Should I choose a generator larger than the calculated result?
-                </h3>
-                <p class="leading-relaxed">
-                    In most cases, choosing the <strong>next standard generator size above</strong>
-                    the calculated result is a smart decision.
-                    This provides additional headroom, improves reliability,
-                    and allows for future appliance additions without overloading the generator.
-                </p>
-            </div>
+        <!-- More FAQs CTA -->
+        <div class="mt-8 text-center">
+            <p class="text-slate-700 mb-3">Have more questions about generator sizing?</p>
+            <a href="/tools/generator-size-calculator-faq/" class="inline-flex items-center gap-2 font-semibold text-blue-600 hover:text-blue-700 transition-colors">
+                Generator Size & Wattage Calculator FAQs
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </a>
         </div>
     </section>
     {{ end }}
@@ -626,7 +614,7 @@
         const el = document.getElementById(id);
         // 元素不存在时打印友好提示，而非直接返回
         if (!el) {
-            console.warn(`[withOptionalEl] 可选元素 #${id} 未找到，跳过回调执行`);
+            // console.warn(`[withOptionalEl] 可选元素 #${id} 未找到，跳过回调执行`);
             return;
         }
         // 元素存在时正常执行回调
@@ -795,7 +783,7 @@
     function calculateWatts() {
         // Use unified load list instead of directly reading checkboxes
         const allLoads = getAllLoads();
-        console.log('allLoads', allLoads);
+        // console.log('allLoads', allLoads);
 
         let totalRunning = 0;
         let maxStartingIncrement = 0;

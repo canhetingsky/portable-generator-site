@@ -19,6 +19,9 @@ Estimate how many watts you need to safely power your appliances during outages 
 
 👉 **[Use the Generator Size Calculator](/tools/generator-size/)**
 
+- **[How the Generator Size Calculator Works](/tools/generator-size-calculator-guide/)**  
+  Learn how running watts, starting watts, and custom appliances are calculated.
+
 <!--
 Future tools can be added here using the same pattern:
 - Clear problem statement

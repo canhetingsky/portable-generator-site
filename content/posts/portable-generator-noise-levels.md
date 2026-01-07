@@ -92,6 +92,10 @@ One of the most overlooked factors in generator noise is **load percentage**.
 
 This is why knowing your **actual running and starting wattage** matters—not just for power capacity, but for noise control as well.
 
+> **If noise matters, sizing matters.**  
+> Calculating your real running watts and startup surge helps keep a generator operating in a quieter load range.  
+> → [Use the generator size calculator](/tools/generator-size-calculator/)
+
 ---
 
 ### Distance and Placement
@@ -142,6 +146,9 @@ Camping environments are especially noise-sensitive:
 
 Lower noise output is often more important than raw power in these scenarios.
 
+For a camping-focused breakdown, see  
+**[Portable Generator for Camping: What Size and Noise Level Do You Really Need?](/posts/portable-generator-for-camping/)**
+
 ---
 
 ### RV and Travel Use
@@ -153,6 +160,9 @@ For RV applications:
 - Generator placement relative to the RV plays a major role
 
 Balancing power requirements with low-load operation helps maintain reasonable noise levels over time.
+
+A deeper explanation is available in  
+**[Portable Generator for RV Use: Power Requirements Explained](/posts/portable-generator-for-rv/)**
 
 ---
 
@@ -178,7 +188,7 @@ Generator noise is not just about design—it is about **how hard the generator 
 
 Instead of guessing, calculating your **actual running watts and starting watts** allows you to choose a generator that stays quieter under real-world conditions.
 
-Use a generator wattage calculator to match your power needs accurately and avoid unnecessary noise.
+→ **[Try the generator size calculator](/tools/generator-size-calculator/)**
 
 ---
 
