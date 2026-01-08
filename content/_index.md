@@ -4,6 +4,8 @@ description: "Clear, practical guides explaining how portable generators work, w
 layout: "home"
 custom:
     use_tailwindcss: true
+    schema:
+        - schema-website
 ---
 
 ## Practical Guides to Portable Generators
@@ -19,6 +21,16 @@ However, choosing the right generator — and using it safely — is often more 
 - Avoid common safety mistakes and misuse
 
 This site is **independent and educational**. We do not sell generators directly, and our content is written to inform — not to push purchases.
+
+---
+
+## Generator Size Calculator
+
+Not sure how much power you actually need?  
+Use our calculator to estimate generator size based on real appliances, including running watts and startup surge.
+
+- 👉 [Generator Size Calculator](/tools/generator-size/)
+- [How the Generator Size Calculator Works](/tools/generator-size-calculator-guide/)
 
 ---
 
@@ -49,12 +61,15 @@ Portable generators are used in many different situations. These guides focus on
 
 ## Choosing the Right Generator
 
-Before comparing models or prices, it is important to understand power requirements, fuel types, and trade-offs:
+Once you understand your power needs, these guides help you compare generator types, fuel options, and practical trade-offs:
 
 - [How Many Watts Do I Need for a Portable Generator?](/posts/how-many-watts-do-i-need-for-a-portable-generator/)
 - [Inverter vs Conventional Generators](/posts/inverter-vs-conventional-generator/)
 - [Gas vs Dual Fuel Generators](/posts/gas-vs-dual-fuel-generators/)
 - [Portable Generator Noise Levels Explained](/posts/portable-generator-noise-levels/)
+
+If you haven't calculated your power requirements yet, start with the  
+→ 👉[Generator Size Calculator](/tools/generator-size/)
 
 ---
 

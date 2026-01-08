@@ -94,7 +94,7 @@ This is why knowing your **actual running and starting wattage** matters—not j
 
 > **If noise matters, sizing matters.**  
 > Calculating your real running watts and startup surge helps keep a generator operating in a quieter load range.  
-> → [Use the generator size calculator](/tools/generator-size-calculator/)
+> → [Use the generator size calculator](/tools/generator-size/)
 
 ---
 
@@ -188,7 +188,7 @@ Generator noise is not just about design—it is about **how hard the generator 
 
 Instead of guessing, calculating your **actual running watts and starting watts** allows you to choose a generator that stays quieter under real-world conditions.
 
-→ **[Try the generator size calculator](/tools/generator-size-calculator/)**
+→ **[Try the generator size calculator](/tools/generator-size/)**
 
 ---
 
@@ -229,7 +229,7 @@ Understanding generator noise is only one part of choosing the right portable ge
 - **[Gas vs Dual Fuel Generators: Which Is Better for Your Use Case?](/posts/gas-vs-dual-fuel-generators/)**  
   Compare fuel types, runtime flexibility, efficiency, and real-world tradeoffs.
 
-- **[Generator Size Calculator](/tools/generator-size-calculator/)**  
+- **[Generator Size Calculator](/tools/generator-size/)**  
   Calculate your actual running and starting watts to choose a generator that runs quieter under realistic loads.
 
 Choosing the right generator size and configuration not only ensures reliable power—it can significantly reduce noise and improve comfort in everyday use.

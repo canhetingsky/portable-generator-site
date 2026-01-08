@@ -220,7 +220,7 @@ Generator sizing does not need to be complicated—but it does need to be accura
 
 By accounting for both running watts and starting watts, and by allowing full customization of appliance loads, the Generator Size Calculator provides a practical, real-world approach to choosing the right generator size.
 
-→ **[Use the Generator Size Calculator](/tools/generator-size-calculator/)**
+→ **[Use the Generator Size Calculator](/tools/generator-size/)**
 
 ---
 

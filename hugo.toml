@@ -19,7 +19,7 @@ unsafe = true
 [params]
 env = "production"
 mainSections = []
-description = 'Practical guides for choosing, using, and staying safe with portable generators.'
+description = 'An independent educational resource providing clear, practical guides on portable generators, generator sizing, safety, and real-world use cases.'
 author = 'Portable Generator Guide'
 defaultTheme = 'auto'
 ShowReadingTime = true
