@@ -5,4 +5,7 @@ layout: "search" # necessary for search
 # description: "Description for Search"
 summary: "search"
 placeholder: "Search here"
+robotsNoIndex: true
+sitemap:
+  disable: true
 ---
