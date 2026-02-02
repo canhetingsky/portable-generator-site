@@ -139,6 +139,11 @@ Add the running watts of every device:
 
 This represents the **continuous load** your generator must support.
 
+Simply adding wattage is often not enough.
+Startup surge and load percentage play a major role in real-world generator performance.  
+→ [Running Watts vs Starting Watts Explained](/posts/running-watts-vs-starting-watts/)  
+→ [Generator Load Percentage Explained](/posts/generator-load-percentage-explained/)  
+
 ---
 
 ### Step 4: Add the Largest Startup *Increment*
@@ -452,3 +457,4 @@ If you want to continue building a complete understanding of portable generators
 - [What Can a Portable Generator Power?](/posts/what-can-a-portable-generator-power/)
 - [How Does a Portable Generator Work?](/posts/how-does-a-portable-generator-work/)
 - [Portable Generator Safety Checklist](/posts/portable-generator-safety-checklist/)
+- [Use the generator size calculator to model your actual appliances](/tools/generator-size/)

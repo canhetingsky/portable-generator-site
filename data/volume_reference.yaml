@@ -1,0 +1,60 @@
+title: "Volume Reference Guide"
+data:
+  - level: 20
+    unit: "dB"
+    description: "Hearing threshold"
+  - level: 30
+    unit: "dB"
+    description: "Rustling leaves"
+  - level: 40
+    unit: "dB"
+    description: "Quiet whisper"
+  - level: 50
+    unit: "dB"
+    description: "Quiet home"
+  - level: 60
+    unit: "dB"
+    description: "Quiet street"
+  - level: 70
+    unit: "dB"
+    description: "Normal conversation"
+  - level: 75
+    unit: "dB"
+    description: "Inside a car"
+  - level: 80
+    unit: "dB"
+    description: "Loud singing"
+  - level: 88
+    unit: "dB"
+    description: "Automobile"
+  - level: 90
+    unit: "dB"
+    description: "Motorcycle"
+  - level: 94
+    unit: "dB"
+    description: "Food blender"
+  - level: 100
+    unit: "dB"
+    description: "Subway"
+  - level: 107
+    unit: "dB"
+    description: "Diesel truck"
+  - level: 115
+    unit: "dB"
+    description: "Lawn mower"
+  - level: 117
+    unit: "dB"
+    description: "Pneumatic riveting machine"
+  - level: 120
+    unit: "dB"
+    description: "Chainsaw"
+  - level: 130
+    unit: "dB"
+    description: "Rock music from large speakers"
+  - level: 140
+    unit: "dB"
+    description: "Jet aircraft"
+  - level: 165
+    unit: "dB"
+    description: "Shotgun"
+notes: "Data sorted from lowest to highest decibel levels. All units are in dB."

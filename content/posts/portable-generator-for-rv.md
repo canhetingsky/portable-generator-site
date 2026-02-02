@@ -81,6 +81,10 @@ If your generator cannot handle this startup surge, the air conditioner may fail
 
 This is the single most common reason RV generators are undersized.
 
+RV air conditioners are one of the most common sources of startup surge.
+If you are unsure how surge power differs from normal usage, see:  
+→ [Running Watts vs Starting Watts Explained](/posts/running-watts-vs-starting-watts/)
+
 ---
 
 ## 30 Amp vs 50 Amp RV Electrical Systems
