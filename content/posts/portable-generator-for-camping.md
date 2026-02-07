@@ -96,6 +96,12 @@ Choosing a generator significantly larger than needed usually results in:
 - Increased fuel consumption  
 - Poor efficiency at low load  
 
+Many small camping generators appear sufficient on paper but still struggle in real use. In most cases, the issue is not total running wattage, but limited headroom for startup surge and high load percentage.
+
+Small generators operating near their maximum capacity have very little margin when appliances start. This often leads to overload warnings, shutdowns, or appliances failing to start at all.
+
+→ [Why Generators Trip or Overload](/posts/why-generators-trip-or-overload/)
+
 ---
 
 ## Why Noise Matters More Than Wattage When Camping
@@ -109,6 +115,9 @@ Even “quiet” generators:
 - Carry farther in open environments  
 
 Many campgrounds impose noise restrictions or quiet hours, making low-load operation critical.
+
+For more about the relationship between load and noise, see:  
+→ [Generator Load Percentage Explained](/posts/generator-load-percentage-explained/)
 
 ---
 
@@ -182,16 +191,14 @@ By choosing a generator sized for your actual loads and prioritizing low-load op
 
 ## Related Guides and Tools
 
-To explore further, see:
-
 - **[Portable Generator Noise Levels Explained: How Loud Is Too Loud?](/posts/portable-generator-noise-levels/)**  
   Learn how load percentage and placement affect generator noise.
 
 - **[Portable Generator for RV Use: Power Requirements Explained](/posts/portable-generator-for-rv/)**  
-  Understand how camping power needs differ from full RV systems.
+  Understand how RV power needs differ from typical camping setups.
 
 - **[Gas vs Dual Fuel Generators: Which Is Better for Your Use Case?](/posts/gas-vs-dual-fuel-generators/)**  
   Compare fuel options for different camping and travel scenarios.
 
 - **[Generator Size Calculator](/tools/generator-size/)**  
-  Calculate your running watts and startup surge to choose the right generator.
+  Calculate your running watts and starting surge to choose the right generator.

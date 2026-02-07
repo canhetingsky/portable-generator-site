@@ -111,6 +111,18 @@ A 50A RV does not always *use* full capacity, but it allows more appliances to r
 
 ---
 
+### Is a 6500 Watt Generator Enough for RV Use?
+
+For most **30-amp RVs**, a 6500 watt generator is **more than enough** to power typical onboard appliances, including one air conditioner.
+
+A 6500W generator can usually run an RV air conditioner, microwave (not at the same time as heavy loads), refrigerator, battery charger, lights, and outlets. It also provides enough headroom to handle AC startup surges.
+
+However, for **50-amp RVs**, a 6500 watt generator is generally not sufficient to run multiple air conditioners or high-demand appliances simultaneously.
+
+If your RV setup varies, use a wattage calculator to verify your actual running load and starting surge before choosing a generator.
+
+---
+
 ## Battery Charging and Converters: The Hidden Load
 
 RV generators do more than power appliances—they also charge onboard batteries.

@@ -117,6 +117,46 @@ When selecting a 5000–8000W generator, focus on:
 
 ---
 
+## 6500 Watt Generator: A Quick Guide
+
+### Is a 6500 Watt Generator Enough?
+
+Many people asking "is a 6500 watt generator enough to run a house" are really referring to essential circuits, not a full electric home.
+
+In most cases, **yes — a 6500 watt generator is enough** to run essential household appliances.
+However, it depends on **what you run at the same time**, not just the total wattage.
+
+### What a 6500 watt generator can typically run
+
+A properly rated 6500W portable generator can usually handle:
+
+- Refrigerator or freezer
+- Sump pump
+- Gas furnace blower
+- TV, lights, Wi-Fi, and small electronics
+- Microwave or coffee maker (one at a time)
+- One window AC or small central AC (especially with a soft start)
+
+### What a 6500 watt generator usually cannot run together
+
+A 6500W generator may struggle or overload if you try to run:
+
+- Central air conditioner **plus** electric dryer
+- Multiple space heaters at the same time
+- Electric oven or range
+- Large well pump combined with high-wattage appliances
+
+### Why 6500 watts is often “enough” — but sometimes not
+
+Generators must handle both **running watts** and **starting (surge) watts**.
+Motor-driven appliances like air conditioners and pumps require extra power when starting.
+If multiple high-surge appliances start together, a 6500W generator can trip or shut down.
+
+👉 **The safest way to know** is to calculate your total running load and account for the
+largest starting surge. Use the [calculator](/generator-sizes/) to check your exact appliance combination.
+
+---
+
 ## Related Guides
 
 - [How Many Watts Do I Need for a Portable Generator?](/posts/how-many-watts-do-i-need-for-a-portable-generator/)

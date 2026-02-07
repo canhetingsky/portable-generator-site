@@ -2,7 +2,7 @@
 title: "How Many Watts Do I Need for a Portable Generator?"
 date: "2025-12-26T10:00:00+08:00"
 description: "Learn how to calculate how many watts you need for a portable generator, including running watts, starting watts, and practical examples. This guide includes a generator wattage and size calculator to help you choose the right generator."
-tags: ['generator wattage calculator', 'generator size calculator', 'portable generator watts', 'generator sizing']
+tags: ['generator wattage calculator', 'generator size calculator', 'portable generator watts', 'generator sizing', 'generator wattage']
 categories: ['Generator Basics']
 draft: false
 slug: "how-many-watts-do-i-need-for-a-portable-generator"

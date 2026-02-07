@@ -408,57 +408,97 @@
             Quick Questions
         </h2>
 
-        <div class="space-y-6
-                >[class^=faq-item]:bg-white
-                dark:>[class^=faq-item]:bg-slate-800
-                >[class^=faq-item]:border-slate-200
-                >[class^=faq-item] h3:text-slate-900
-                >[class^=faq-item] p:text-slate-600
-                >[class^=faq-item] p strong:text-slate-900
-                dark:>[class^=faq-item]:border-slate-900
-                dark:>[class^=faq-item] h3:text-white!
-                dark:>[class^=faq-item] p:text-slate-400!
-                dark:>[class^=faq-item] p strong:text-white!">
+        <div class="space-y-4
+                        >[class^=faq-item]:bg-white
+                        dark:>[class^=faq-item]:bg-slate-800
+                        >[class^=faq-item]:border-slate-200
+                        >[class^=faq-item]:text-slate-600
+                        >details[open]>[class^=faq-item]:border-blue-200
+                        dark:>[class^=faq-item]:border-slate-900
+                        dark:>[details[open]>[class^=faq-item]:border-blue-900]">
             <!-- FAQ 1 -->
-            <div class="faq-item border  rounded-xl p-6">
-                <h3 class="font-semibold text-lg text-slate-900 mb-2">
-                    Why does the recommended generator size seem larger than expected?
-                </h3>
-                <p class="leading-relaxed">
-                    Because the calculation includes startup surge and a safety margin to avoid overload and unexpected shutdowns.
-                </p>
-            </div>
+            <details class="faq-item border rounded-xl group">
+                <summary
+                    class="p-6 cursor-pointer select-none list-none flex items-center justify-between gap-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                    <h3 class="font-semibold text-lg text-slate-900 dark:text-white">
+                        Why does the recommended generator size seem larger than expected?
+                    </h3>
+                    <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform flex-shrink-0"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </summary>
+                <div class="px-6 pb-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Because the calculation includes startup surge and a safety margin to avoid overload and unexpected
+                    shutdowns.
+                </div>
+            </details>
 
             <!-- FAQ 2 -->
-            <div class="faq-item border  rounded-xl p-6">
-                <h3 class="font-semibold text-lg text-slate-900 mb-2">
-                    Do I need to include every appliance I own?
-                </h3>
-                <p class="leading-relaxed">
+            <details class="faq-item border rounded-xl group">
+                <summary
+                    class="p-6 cursor-pointer select-none list-none flex items-center justify-between gap-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                    <h3 class="font-semibold text-lg text-slate-900 dark:text-white">
+                        Do I need to include every appliance I own?
+                    </h3>
+                    <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform flex-shrink-0"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </summary>
+                <div class="px-6 pb-6 text-slate-600 dark:text-slate-400 leading-relaxed">
                     No. Only include appliances you plan to run at the same time.
-                </p>
-            </div>
+                </div>
+            </details>
 
             <!-- FAQ 3 -->
-            <div class="faq-item border  rounded-xl p-6">
-                <h3 class="font-semibold text-lg text-slate-900 mb-2">
-                    Does fuel type affect the calculated generator size?
-                </h3>
-                <p class="leading-relaxed">
-                    Yes. Generators typically produce less power when running on propane compared to gasoline, which may require additional capacity.
-                </p>
-            </div>
-        </div>
+            <details class="faq-item border rounded-xl group">
+                <summary
+                    class="p-6 cursor-pointer select-none list-none flex items-center justify-between gap-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                    <h3 class="font-semibold text-lg text-slate-900 dark:text-white">
+                        Is a 6500 watt generator enough to run a house or essential appliances?
+                    </h3>
+                    <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform flex-shrink-0"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </summary>
+                <div class="px-6 pb-6 text-slate-600 dark:text-slate-400 leading-relaxed space-y-3">
+                    <p>
+                        In most cases, <strong class="text-slate-900 dark:text-white">yes — a 6500 watt generator is
+                            enough to run essential household appliances</strong>, but it is not designed to power a
+                        full electric home.
+                    </p>
+                    <p>
+                        A 6500W generator can typically handle a refrigerator, sump pump,
+                        furnace blower, lights, internet equipment, and one air conditioner.
+                        It may struggle if central AC, electric dryers, ovens, or multiple
+                        high-surge appliances are running at the same time.
+                    </p>
+                    <p>
+                        Use the calculator above to check your exact running load and starting surge.
+                    </p>
+                </div>
+            </details>
 
-        <!-- More FAQs CTA -->
-        <div class="mt-8 text-center">
-            <p class="text-slate-700 mb-3">Have more questions about generator sizing?</p>
-            <a href="/tools/generator-size-calculator-faq/" class="inline-flex items-center gap-2 font-semibold text-blue-600 hover:text-blue-700 transition-colors">
-                Generator Size & Wattage Calculator FAQs
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </a>
+            <!-- FAQ 4 -->
+            <details class="faq-item border rounded-xl group">
+                <summary
+                    class="p-6 cursor-pointer select-none list-none flex items-center justify-between gap-4 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors">
+                    <h3 class="font-semibold text-lg text-slate-900 dark:text-white">
+                        Does fuel type affect the calculated generator size?
+                    </h3>
+                    <svg class="w-5 h-5 text-slate-400 group-open:rotate-180 transition-transform flex-shrink-0"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </summary>
+                <div class="px-6 pb-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Yes. Generators typically produce less power when running on propane compared to gasoline, which may
+                    require
+                    additional capacity.
+                </div>
+            </details>
         </div>
     </section>
     {{ end }}
